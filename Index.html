@@ -26,9 +26,10 @@
             display: flex; /* Use flexbox to align items horizontally */
             justify-content: center; /* Center align the items */
             background-color: #444;
+            flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
         }
         .nav-links li {
-            margin: 0 10px; /* Horizontal spacing between links */
+            margin: 0 5px; /* Horizontal spacing between links */
         }
         .nav-links a {
             color: #fff;
@@ -54,9 +55,28 @@
             color: #333;
             text-decoration: none;
         }
-        img {
-            max-width: 10%;
-            height: auto;
+      --  img {
+      --      max-width: 10%;
+      --      height: auto;
+      --}
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links a {
+                padding: 8px 16px;
+            }
+        }
+        @media (max-width: 480px) {
+            .nav-links {
+                flex-direction: column; /* Stack links vertically on very small screens */
+            }
+            .nav-links li {
+                margin: 5px 0; /* Vertical spacing between links */
+            }
+            .nav-links a {
+                padding: 12px 20px;
+                text-align: center;
+            }
         }
     </style>
 </head>

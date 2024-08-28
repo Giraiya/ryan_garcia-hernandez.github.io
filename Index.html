@@ -26,9 +26,10 @@
             display: flex; /* Use flexbox to align items horizontally */
             justify-content: center; /* Center align the items */
             background-color: #444;
-            flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
+           /* flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
         }
         .nav-links li {
+            position: relative; /* Positioning context for the dropdown */
             margin: 0 5px; /* Horizontal spacing between links */
         }
         .nav-links a {
@@ -39,6 +40,26 @@
         }
         .nav-links a:hover {
             background-color: #555;
+        }
+        .dropdown-content {
+            display: none; /* Hide the dropdown content by default */
+            position: absolute; /* Position relative to the parent li */
+            background-color: #444;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #555;
+        }
+        .nav-links li:hover .dropdown-content {
+            display: block; /* Show the dropdown on hover */
         }
         main {
             padding: 20px;
@@ -55,10 +76,10 @@
             color: #333;
             text-decoration: none;
         }
-      --  img {
-      --      max-width: 10%;
-      --      height: auto;
-      --}
+    /*  img {
+    /*      max-width: 10%;
+    /*      height: auto;
+    /*  }
 
         /* Media Queries for Responsive Design */
         @media (max-width: 768px) {
@@ -85,22 +106,26 @@
         <h1>Hello World</h1>
         <nav>
             <ul class="nav-links">
-                <!-- Add links for each assignment -->
-                <li><a href="assignment1.html">Assignment 1</a></li>
-                <li><a href="assignment2.html">Assignment 2</a></li>
-                <li><a href="assignment3.html">Assignment 3</a></li>
-                <li><a href="assignment4.html">Assignment 4</a></li>
-                <li><a href="assignment5.html">Assignment 5</a></li>
-                <li><a href="assignment6.html">Assignment 6</a></li>
-                <li><a href="assignment7.html">Assignment 7</a></li>
-                <li><a href="assignment8.html">Assignment 8</a></li>
-                <li><a href="assignment9.html">Assignment 9</a></li>
-                <li><a href="assignment10.html">Assignment 10</a></li>
-                <li><a href="assignment11.html">Assignment 11</a></li>
-                <li><a href="assignment12.html">Assignment 12</a></li>
-                <li><a href="assignment13.html">Assignment 13</a></li>
-                <li><a href="assignment14.html">Assignment 14</a></li>
-                <li><a href="assignment15.html">Assignment 15</a></li>
+                <li><a href="#">Assignments</a>
+                    <div class="dropdown-content">
+                        <!-- Links for each assignment -->
+                        <a href="assignment1.html">Assignment 1</a>
+                        <a href="assignment2.html">Assignment 2</a>
+                        <a href="assignment3.html">Assignment 3</a>
+                        <a href="assignment4.html">Assignment 4</a>
+                        <a href="assignment5.html">Assignment 5</a>
+                        <a href="assignment6.html">Assignment 6</a>
+                        <a href="assignment7.html">Assignment 7</a>
+                        <a href="assignment8.html">Assignment 8</a>
+                        <a href="assignment9.html">Assignment 9</a>
+                        <a href="assignment10.html">Assignment 10</a>
+                        <a href="assignment11.html">Assignment 11</a>
+                        <a href="assignment12.html">Assignment 12</a>
+                        <a href="assignment13.html">Assignment 13</a>
+                        <a href="assignment14.html">Assignment 14</a>
+                        <a href="assignment15.html">Assignment 15</a>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>

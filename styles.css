@@ -84,7 +84,7 @@ img {
 
 /* Or set the height of the image to 200px */
 img {
-    height: 200px;
+    height: 175px;
     width: auto; /* Maintain aspect ratio */
 }
 

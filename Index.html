@@ -3,127 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World - Assignment 1</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-        }
-        nav {
-            margin-bottom: 20px;
-        }
-        .nav-links {
-            list-style-type: none;
-            padding: 0;
-            display: flex; /* Use flexbox to align items horizontally */
-            justify-content: center; /* Center align the items */
-            background-color: #444;
-           /* flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
-        }
-        .nav-links li {
-            position: relative; /* Positioning context for the dropdown */
-            margin: 0 5px; /* Horizontal spacing between links */
-        }
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 20px;
-            display: block;
-        }
-        .nav-links a:hover {
-            background-color: #555;
-        }
-        .dropdown-content {
-            display: none; /* Hide the dropdown content by default */
-            position: absolute; /* Position relative to the parent li */
-            background-color: #444;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-        .dropdown-content a {
-            color: white;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-        .dropdown-content a:hover {
-            background-color: #555;
-        }
-        .nav-links li:hover .dropdown-content {
-            display: block; /* Show the dropdown on hover */
-        }
-        main {
-            padding: 20px;
-        }
-        footer {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-        a {
-            color: #333;
-            text-decoration: none;
-        }
-      img {
-          max-width: 13%;
-          height: auto;
-      }
-
-        /* Media Queries for Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links a {
-                padding: 8px 16px;
-            }
-        }
-        @media (max-width: 480px) {
-            .nav-links {
-                flex-direction: column; /* Stack links vertically on very small screens */
-            }
-            .nav-links li {
-                margin: 5px 0; /* Vertical spacing between links */
-            }
-            .nav-links a {
-                padding: 12px 20px;
-                text-align: center;
-            }
-        }
-    </style>
+    <meta name="description" content="A personal website for COP4813 - Web Systems I to demonstrate web programming skills.">
+    <meta name="keywords" content="COP4813, Web Systems, Web Development, Assignments, Portfolio">
+    <meta name="author" content="Ryan Garcia-Hernandez">
+    <title>My Personal Website - Assignment 2</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Hello World</h1>
+        <h1>Ryan Garcia-Hernandez's Web Portfolio</h1>
         <nav>
             <ul class="nav-links">
-                <li><a href="#">Assignments</a>
+                <li><a href="#">My Classes</a>
                     <div class="dropdown-content">
-                        <!-- Links for each assignment -->
+                        <a href="class1.html">Class 1</a>
+                        <a href="class2.html">Class 2</a>
+                    </div>
+                </li>
+                <li><a href="#">My Assignments</a>
+                    <div class="dropdown-content">
                         <a href="assignment1.html">Assignment 1</a>
                         <a href="assignment2.html">Assignment 2</a>
-                        <a href="assignment3.html">Assignment 3</a>
-                        <a href="assignment4.html">Assignment 4</a>
-                        <a href="assignment5.html">Assignment 5</a>
-                        <a href="assignment6.html">Assignment 6</a>
-                        <a href="assignment7.html">Assignment 7</a>
-                        <a href="assignment8.html">Assignment 8</a>
-                        <a href="assignment9.html">Assignment 9</a>
-                        <a href="assignment10.html">Assignment 10</a>
-                        <a href="assignment11.html">Assignment 11</a>
-                        <a href="assignment12.html">Assignment 12</a>
-                        <a href="assignment13.html">Assignment 13</a>
-                        <a href="assignment14.html">Assignment 14</a>
-                        <a href="assignment15.html">Assignment 15</a>
+                        <!-- Add more assignment links as needed -->
+                    </div>
+                </li>
+                <li><a href="#">My Favorite Sites</a>
+                    <div class="dropdown-content">
+                        <a href="https://www.example1.com">Favorite Site 1</a>
+                        <a href="https://www.example2.com">Favorite Site 2</a>
+                    </div>
+                </li>
+                <li><a href="#">Programming Sites</a>
+                    <div class="dropdown-content">
+                        <a href="https://www.programming1.com">Programming Site 1</a>
+                        <a href="https://www.programming2.com">Programming Site 2</a>
                     </div>
                 </li>
             </ul>
@@ -131,21 +44,18 @@
     </header>
 
     <main>
-        <p>Welcome to my website. This is a simple "Hello World" page created for Assignment 1 of COP4813 - Web Systems I.</p>
-        <p>Created by Ryan Garcia-Hernandez</p>
+        <h2>About This Site</h2>
+        <p>This website is created for the COP4813 - Web Systems I course. It showcases my web development skills and serves as a portfolio for potential employers.</p>
+        <p>Here, you will find links to various assignments and projects that I have completed throughout the course.</p>
+        <img src="images/profile.jpg" alt="Profile picture of Ryan Garcia-Hernandez" style="width: 30%; height: auto;">
 
-        <!-- Sample image -->
-        <img src="screenshot of me.jpg" alt="Sample Image" style="width: 30%; height: auto;">
-
-        <!-- Link to another page (example) -->
-        <p><a href="https://www.example.com" style="color: #3498db;">Visit another page</a></p>
-
-        <!-- Information about the page -->
-        <p>This page was created as part of the coursework for COP4813. It demonstrates the ability to deploy a basic HTML website on a web host.</p>
+        <h3>Contact Information</h3>
+        <p>Email: <a href="mailto:ryan.garcia@example.com">ryan.garcia@example.com</a></p>
     </main>
 
     <footer>
-        <p>&copy; 2024 Created by Ryan Garcia-Hernandez</p>
+        <p>&copy; 2024 Ryan Garcia-Hernandez</p>
     </footer>
 </body>
 </html>
+

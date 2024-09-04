@@ -78,7 +78,7 @@ footer {
 }
 /* Set the width of the image to 50% of its original size */
 img {
-    max-width: 25%;
+    max-width: 15%;
     height: auto;
 }
 

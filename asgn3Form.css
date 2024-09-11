@@ -1,66 +1,100 @@
+/* General Body Styling */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    /*text-align: center;*/
 }
 
+/* Header Styling */
 header {
     background-color: #333;
-    color: white;
-    padding: 20px;
-}
-
-nav {
-    margin-bottom: 20px;
-}
-
-.nav-links {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    background-color: #444;
-}
-
-.nav-links li {
-    margin: 0 10px;
-}
-
-.nav-links a {
     color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
+    padding: 20px;
+    text-align: center;
 }
 
+
+
+/* Form Styling */
 form {
-    max-width: 500px;
-    margin: auto;
+    max-width: 600px;
+    margin: 0 auto;
     padding: 20px;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+form h2 {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 label {
     display: block;
-    margin-top: 10px;
+    margin-bottom: 5px;
 }
 
-input, textarea {
+input[type="text"], 
+input[type="email"], 
+input[type="tel"], 
+input[type="date"], 
+textarea {
     width: 100%;
     padding: 10px;
-    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+textarea {
+    resize: vertical;
+    height: 100px;
 }
 
 input[type="submit"] {
     background-color: #3498db;
     color: white;
-    border: none;
     padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
 }
 
 input[type="submit"]:hover {
     background-color: #2980b9;
+}
+
+/* Form Validation Error Styling */
+.error {
+    color: red;
+    font-size: 0.9em;
+    display: none;
+}
+
+input.invalid {
+    border-color: red;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .nav-links a {
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-links {
+        flex-direction: column;
+    }
+
+    .nav-links li {
+        margin: 5px 0;
+    }
+
+    .nav-links a {
+        padding: 12px 20px;
+        text-align: center;
+    }
 }

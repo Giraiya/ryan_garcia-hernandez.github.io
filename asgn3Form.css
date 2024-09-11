@@ -25,15 +25,84 @@ nav {
 }
 
 .nav-links li {
-    margin: 0 10px;
+    position: relative; /* Positioning context for the dropdown */
+    margin: 0 5px; /* Horizontal spacing between links */
 }
 
 .nav-links a {
     color: #fff;
     text-decoration: none;
     padding: 10px 20px;
+    display: block;
+}
+/* THIS IS WHERE DROPDOWN CSS BEGINS I THINK? */
+.nav-links a:hover {
+    background-color: #555;
 }
 
+.dropdown-content {
+    display: none; /* Hide the dropdown content by default */
+    position: absolute; /* Position relative to the parent li */
+    background-color: #444;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #555;
+}
+
+.nav-links li:hover .dropdown-content {
+    display: block; /* Show the dropdown on hover */
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .nav-links a {
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-links {
+        flex-direction: column; /* Stack links vertically on very small screens */
+    }
+
+    .nav-links li {
+        margin: 5px 0; /* Vertical spacing between links */
+    }
+
+    .nav-links a {
+        padding: 12px 20px;
+        text-align: center;
+    }
+}
+/* THIS IS WHERE CSS DROPDOWN CODE ENDS (FORM CODE FOR ASGN 3 BEGINS)*/
 form {
     max-width: 500px;
     margin: auto;

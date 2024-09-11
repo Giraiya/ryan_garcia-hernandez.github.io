@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Assignment 3 - Input Form with Validation">
+    <title>Assignment 3 - Input Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Assignment 3 - User Input Form</h1>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="assignments.html">Assignments</a></li>
+                <li><a href="assignment3.html">Form</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <form id="userForm" action="mailto:your-email@example.com" method="post" onsubmit="return validateForm()">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="First Last"><br>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" placeholder="123 Main St, City, State"><br>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required><br>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" placeholder="name@example.com" required><br>
+
+            <label for="birthDate">Birth Date:</label>
+            <input type="date" id="birthDate" name="birthDate" required><br>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" placeholder="Enter your message here" required></textarea><br>
+
+            <label for="security">Security Question: What is 2 + 3?</label>
+            <input type="text" id="security" name="security" required><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Created by Ryan Garcia-Hernandez</p>
+    </footer>
+
+    <script src="formValidation.js"></script>
+</body>
+</html>

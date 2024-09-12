@@ -13,7 +13,7 @@ function validateForm() {
         return false;
     }
 
-    // Function to Validate Address
+    // Function to validate address
 function validateAddress() {
     const address = document.getElementById('address').value.trim();
     const addressParts = address.split(',');
@@ -24,9 +24,9 @@ function validateAddress() {
         return false;
     }
 
-    // Validate street Address
+    // Validate street address
     const street = addressParts[0].trim();
-    if (!/^\d+\s[A-z]+\s[A-z]+/.test(street)) {
+    if (!/^\d+\s[A-Za-z\s]+/.test(street)) {
         alert("Please enter a valid street address (e.g., 123 Main St).");
         return false;
     }
@@ -63,13 +63,26 @@ function validateAddress() {
     return true;
 }
 
-// Example usage: Attach this function to the form submit event
-document.getElementById('myForm').addEventListener('submit', function(event) {
-    if (!validateAddress()) {
-        event.preventDefault(); // Prevent form submission if validation fails
-    }
-});
+// Function to validate the form
+function validateForm() {
+    let name = document.getElementById("name").value.trim();
+    let address = document.getElementById("address").value.trim();
+    let phone = document.getElementById("phone").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let birthDate = document.getElementById("birthDate").value;
+    let message = document.getElementById("message").value.trim();
+    let security = document.getElementById("security").value.trim();
 
+    // Validate Name
+    if (name.split(' ').length < 2) {
+        alert("Please enter both first and last names.");
+        return false;
+    }
+
+    // Validate Address
+    if (!validateAddress()) {
+        return false;
+    }
 
     // Validate Phone
     let phonePattern = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/;
@@ -109,3 +122,11 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
     alert("Form submitted successfully!");
     return true;
 }
+
+// Attach the form validation to the form's submit event
+document.getElementById('myForm').addEventListener('submit', function(event) {
+    if (!validateForm()) {
+        event.preventDefault(); // Prevent form submission if validation fails
+    }
+});
+

@@ -13,11 +13,63 @@ function validateForm() {
         return false;
     }
 
-    // Validate Address
-    if (address === "") {
-        alert("Please enter a valid address.");
+    // Function to Validate Address
+function validateAddress() {
+    const address = document.getElementById('address').value.trim();
+    const addressParts = address.split(',');
+
+    // Ensure the address contains at least 3 parts: street, city, and state+zip
+    if (addressParts.length < 3) {
+        alert("Please enter a valid address with street, city, and state, ZIP code.");
         return false;
     }
+
+    // Validate street Address
+    const street = addressParts[0].trim();
+    if (!/^\d+\s[A-z]+\s[A-z]+/.test(street)) {
+        alert("Please enter a valid street address (e.g., 123 Main St).");
+        return false;
+    }
+
+    // Validate city
+    const city = addressParts[1].trim();
+    if (!/^[A-Za-z\s]+$/.test(city)) {
+        alert("Please enter a valid city name.");
+        return false;
+    }
+
+    // Validate state and ZIP code
+    const stateZip = addressParts[2].trim();
+    const stateZipParts = stateZip.split(' ');
+    if (stateZipParts.length !== 2) {
+        alert("Please enter a valid state and ZIP code (e.g., CA 90001).");
+        return false;
+    }
+
+    const state = stateZipParts[0].trim();
+    const zip = stateZipParts[1].trim();
+    
+    if (!/^[A-Z]{2}$/.test(state)) {
+        alert("Please enter a valid two-letter state abbreviation.");
+        return false;
+    }
+
+    if (!/^\d{5}(-\d{4})?$/.test(zip)) {
+        alert("Please enter a valid ZIP code (e.g., 90001 or 90001-1234).");
+        return false;
+    }
+
+    // If all validations pass
+    return true;
+}
+
+// Example usage: Attach this function to the form submit event
+document.getElementById('myForm').addEventListener('submit', function(event) {
+    if (!validateAddress()) {
+        event.preventDefault(); // Prevent form submission if validation fails
+    }
+});
+
 
     // Validate Phone
     let phonePattern = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/;

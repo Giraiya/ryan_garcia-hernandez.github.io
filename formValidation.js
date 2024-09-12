@@ -15,11 +15,10 @@ function validateForm() {
 
     // Function to validate address
 function validateAddress() {
-    const address = document.getElementById('address').value.trim();
     const addressParts = address.split(',');
 
     // Ensure the address contains at least 3 parts: street, city, and state+zip
-    if (addressParts.length < 3) {
+    if (addressParts.length < 4) {
         alert("Please enter a valid address with street, city, and state, ZIP code.");
         return false;
     }

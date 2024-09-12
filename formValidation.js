@@ -63,26 +63,7 @@ function validateAddress() {
     return true;
 }
 
-// Function to validate the form
-function validateForm() {
-    let name = document.getElementById("name").value.trim();
-    let address = document.getElementById("address").value.trim();
-    let phone = document.getElementById("phone").value.trim();
-    let email = document.getElementById("email").value.trim();
-    let birthDate = document.getElementById("birthDate").value;
-    let message = document.getElementById("message").value.trim();
-    let security = document.getElementById("security").value.trim();
 
-    // Validate Name
-    if (name.split(' ').length < 2) {
-        alert("Please enter both first and last names.");
-        return false;
-    }
-
-    // Validate Address
-    if (!validateAddress()) {
-        return false;
-    }
 
     // Validate Phone
     let phonePattern = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/;

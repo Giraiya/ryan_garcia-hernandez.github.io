@@ -70,14 +70,6 @@ input[type="submit"]:hover {
     background-color: #2980b9;
 }
 
-/* Center the button container vertically */
-form {
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    height: 100vh; /* Full viewport height */
-}
-
 /* Form Validation Error Styling */
 .error {
     color: red;

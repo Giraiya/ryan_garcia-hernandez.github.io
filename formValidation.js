@@ -82,7 +82,7 @@ document.getElementById('phone').addEventListener('input', function(e) {
 });
 
 // Attach the form validation to the form's submit event
-document.getElementById('myForm').addEventListener('submit', function(event) {
+document.getElementById('userForm').addEventListener('submit', function(event) {
     if (!validateForm()) {
         event.preventDefault(); // Prevent form submission if validation fails
     }

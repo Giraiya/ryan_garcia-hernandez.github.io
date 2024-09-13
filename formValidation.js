@@ -1,24 +1,9 @@
-function validateForm() {
-    let name = document.getElementById("name").value.trim();
-    let address = document.getElementById("address").value.trim();
-    let phone = document.getElementById("phone").value.trim();
-    let email = document.getElementById("email").value.trim();
-    let birthDate = document.getElementById("birthDate").value;
-    let message = document.getElementById("message").value.trim();
-    let security = document.getElementById("security").value.trim();
-
-    // Validate Name
-    if (name.split(' ').length < 2) {
-        alert("Please enter both first and last names.");
-        return false;
-    }
-
-    // Function to validate address
-function validateAddress() {
+// Function to validate address
+function validateAddress(address) {
     const addressParts = address.split(',');
 
-    // Ensure the address contains at least 3 parts: street, city, and state+zip
-    if (addressParts.length < 4) {
+    // Ensure the address contains at least 3 parts: street, city, state+zip
+    if (addressParts.length < 3) {
         alert("Please enter a valid address with street, city, and state, ZIP code.");
         return false;
     }
@@ -62,7 +47,26 @@ function validateAddress() {
     return true;
 }
 
+// Function to validate the form
+function validateForm() {
+    let name = document.getElementById("name").value.trim();
+    let address = document.getElementById("address").value.trim();
+    let phone = document.getElementById("phone").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let birthDate = document.getElementById("birthDate").value;
+    let message = document.getElementById("message").value.trim();
+    let security = document.getElementById("security").value.trim();
 
+    // Validate Name
+    if (name.split(' ').length < 2) {
+        alert("Please enter both first and last names.");
+        return false;
+    }
+
+    // Validate Address
+    if (!validateAddress(address)) {
+        return false;
+    }
 
     // Validate Phone
     let phonePattern = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/;
@@ -109,4 +113,5 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent form submission if validation fails
     }
 });
+
 

@@ -68,12 +68,25 @@ function validateForm() {
         return false;
     }
 
-    // Validate Phone
-    let phonePattern = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/;
+    // Validate Phone (Ensure it's in the (123) 456-7890 format)
+    let phonePattern = /^\(\d{3}\) \d{3}-\d{4}$/;
     if (!phonePattern.test(phone)) {
-        alert("Please enter a valid phone number in the format 123-456-7890.");
+        alert("Please enter a valid phone number in the format (123) 456-7890.");
         return false;
     }
+
+    // Phone Input Mask (Real-time formatting)
+document.getElementById('phone').addEventListener('input', function(e) {
+    let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+    e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+});
+
+// Attach the form validation to the form's submit event
+document.getElementById('myForm').addEventListener('submit', function(event) {
+    if (!validateForm()) {
+        event.preventDefault(); // Prevent form submission if validation fails
+    }
+});
 
     // Validate Email
     let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

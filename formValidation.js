@@ -114,10 +114,12 @@ document.getElementById('phone').addEventListener('input', function(e) {
 
 // Attach the form validation to the form's submit event
 document.getElementById('userForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form submission if validation fails
+    // Prevent default form submission
+    event.preventDefault();
 
+    // Validate form data
     if (!validateForm()) {
-        return false; // Stop the submission if validation fails
+        return; // Stop the submission if validation fails
     }
 
     // If validation succeeds, gather form data and go to the confirmation page

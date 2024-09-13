@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Confirm your form data before submission">
+    <title>Confirmation Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        .button-group {
+            margin-top: 20px;
+        }
+        .button-group button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button-group button.edit {
+            background-color: #f39c12;
+            color: white;
+        }
+        .button-group button.send {
+            background-color: #27ae60;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Confirm Your Information</h1>
+        <p><strong>Name:</strong> <span id="confirmName"></span></p>
+        <p><strong>Address:</strong> <span id="confirmAddress"></span></p>
+        <p><strong>Phone Number:</strong> <span id="confirmPhone"></span></p>
+        <p><strong>Email:</strong> <span id="confirmEmail"></span></p>
+        <p><strong>Birth Date:</strong> <span id="confirmBirthDate"></span></p>
+        <p><strong>Message:</strong> <span id="confirmMessage"></span></p>
+        <p><strong>Security Answer:</strong> <span id="confirmSecurity"></span></p>
+
+        <div class="button-group">
+            <button class="edit" onclick="editForm()">Edit</button>
+            <button class="send" onclick="sendForm()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // Load the form data from localStorage and display it
+        const formData = JSON.parse(localStorage.getItem('formData'));
+
+        document.getElementById('confirmName').innerText = formData.name;
+        document.getElementById('confirmAddress').innerText = formData.address;
+        document.getElementById('confirmPhone').innerText = formData.phone;
+        document.getElementById('confirmEmail').innerText = formData.email;
+        document.getElementById('confirmBirthDate').innerText = formData.birthDate;
+        document.getElementById('confirmMessage').innerText = formData.message;
+        document.getElementById('confirmSecurity').innerText = formData.security;
+
+        // Function to go back to the form for editing
+        function editForm() {
+            window.location.href = 'index.html'; // Go back to the form
+        }
+
+        // Function to submit the form
+        function sendForm() {
+            // You can either programmatically submit the form or display a success message
+            alert("Form submitted successfully!");
+            // Clear the stored data
+            localStorage.removeItem('formData');
+        }
+    </script>
+</body>
+</html>

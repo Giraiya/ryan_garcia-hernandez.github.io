@@ -121,10 +121,32 @@ document.getElementById('userForm').addEventListener('submit', function(event) {
 }
 
 // Attach the form validation to the form's submit event
-document.getElementById('myForm').addEventListener('submit', function(event) {
+document.getElementById('userForm').addEventListener('submit', function(event) {
     if (!validateForm()) {
         event.preventDefault(); // Prevent form submission if validation fails
     }
 });
+
+document.getElementById('userForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Gather form data
+    const formData = {
+        name: document.getElementById("name").value,
+        address: document.getElementById("address").value,
+        phone: document.getElementById("phone").value,
+        email: document.getElementById("email").value,
+        birthDate: document.getElementById("birthDate").value,
+        message: document.getElementById("message").value,
+        security: document.getElementById("security").value
+    };
+
+    // Store form data in local storage
+    localStorage.setItem('formData', JSON.stringify(formData));
+
+    // Redirect to the confirmation page
+    window.location.href = 'confirmation.html';
+});
+
 
 

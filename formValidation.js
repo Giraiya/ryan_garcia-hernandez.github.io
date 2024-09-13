@@ -32,7 +32,7 @@ function validateAddress(address) {
 
     const state = stateZipParts[0].trim();
     const zip = stateZipParts[1].trim();
-    
+
     if (!/^[A-Z]{2}$/.test(state)) {
         alert("Please enter a valid two-letter state abbreviation.");
         return false;
@@ -75,19 +75,6 @@ function validateForm() {
         return false;
     }
 
-    // Phone Input Mask (Real-time formatting)
-document.getElementById('phone').addEventListener('input', function(e) {
-    let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
-    e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
-});
-
-// Attach the form validation to the form's submit event
-document.getElementById('userForm').addEventListener('submit', function(event) {
-    if (!validateForm()) {
-        event.preventDefault(); // Prevent form submission if validation fails
-    }
-});
-
     // Validate Email
     let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
@@ -115,22 +102,25 @@ document.getElementById('userForm').addEventListener('submit', function(event) {
         return false;
     }
 
-    // If all validation passes, show confirmation page or alert
-    alert("Form submitted successfully!");
+    // If all validation passes, return true
     return true;
 }
 
-// Attach the form validation to the form's submit event
-document.getElementById('userForm').addEventListener('submit', function(event) {
-    if (!validateForm()) {
-        event.preventDefault(); // Prevent form submission if validation fails
-    }
+// Real-time phone number formatting (input mask)
+document.getElementById('phone').addEventListener('input', function(e) {
+    let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+    e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
 });
 
+// Attach the form validation to the form's submit event
 document.getElementById('userForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form submission
+    event.preventDefault(); // Prevent form submission if validation fails
 
-    // Gather form data
+    if (!validateForm()) {
+        return false; // Stop the submission if validation fails
+    }
+
+    // If validation succeeds, gather form data and go to the confirmation page
     const formData = {
         name: document.getElementById("name").value,
         address: document.getElementById("address").value,
@@ -141,12 +131,13 @@ document.getElementById('userForm').addEventListener('submit', function(event) {
         security: document.getElementById("security").value
     };
 
-    // Store form data in local storage
+    // Store form data in local storage for the confirmation page
     localStorage.setItem('formData', JSON.stringify(formData));
 
     // Redirect to the confirmation page
     window.location.href = 'confirmation.html';
 });
+
 
 
 

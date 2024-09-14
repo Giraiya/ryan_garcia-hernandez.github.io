@@ -17,7 +17,12 @@
 
     <main>
         <div id="contactForm">
-            <form id="userForm" onsubmit="return validateForm()">
+            <!-- No need for a form here; data is just displayed -->
+            <p><strong>Name:</strong> <span id="confName"></span></p>
+            <p><strong>Address:</strong> <span id="confAddress"></span></p>
+            <p><strong>City:</strong> <span id="confCity"></span></p>
+            <p><strong>State:</strong> <span id="confState"></span></p>
+           <!-- <form id="userForm" onsubmit="return validateForm()">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required><br>
                 <span class="error" id="nameError"></span>

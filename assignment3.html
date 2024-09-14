@@ -66,11 +66,11 @@
 		<form id="contactForm">
 			<h1>User Form</h1>
 			<label for="name">Name (First and Last):</label>
-			<input type="text" id="name" name="name" placeholder="Paul Miller" required>
+			<input type="text" id="name" name="name" placeholder="John Doe" required>
 			<span class="error" id="nameError"></span>
 	
 			<label for="address">Mailing Address:</label>
-			<input type="text" id="address" name="address" placeholder="400 Bay Lane" required>
+			<input type="text" id="address" name="address" placeholder="123 Main St" required>
 			<span class="error" id="addressError"></span>
 	
 			<div class="address">
@@ -319,7 +319,7 @@
             let birthDate = encodeURIComponent(document.getElementById('birthDate').value);
             let message = encodeURIComponent(document.getElementById('message').value.trim());
 
-            let mailtoLink = `mailto:support@stanfom.com?subject=Contact Form Submission&body=Name: ${name}%0AAddress: ${address}%0ACity: ${city}%0AState: ${state}%0AZip Code: ${zip}%0APhone Number: ${phone}%0AEmail Address: ${email}%0ABirth Date: ${birthDate}%0AMessage: ${message}`;
+            let mailtoLink = `mailto:ryan_garcia-hernandez@daytonastate.edu?subject=Contact Form Submission&body=Name: ${name}%0AAddress: ${address}%0ACity: ${city}%0AState: ${state}%0AZip Code: ${zip}%0APhone Number: ${phone}%0AEmail Address: ${email}%0ABirth Date: ${birthDate}%0AMessage: ${message}`;
 
             window.location.href = mailtoLink;
         }
@@ -346,6 +346,6 @@
     <footer>
         <p>&copy; 2024 Created by Ryan Garcia-Hernandez</p>
     </footer> 
-<script src="formValidation.js"></script>
+<!-- <script src="formValidation.js"></script> -->
 </body>
 </html>

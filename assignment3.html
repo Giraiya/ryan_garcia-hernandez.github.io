@@ -63,41 +63,289 @@
 
     <main>
     <div class="form">
-        <form id="contactForm" onsubmit="return validateForm()"> 
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" placeholder="First Last"><br>
+		<form id="contactForm">
+			<h1>User Form</h1>
+			<label for="name">Name (First and Last):</label>
+			<input type="text" id="name" name="name" placeholder="Paul Miller" required>
+			<span class="error" id="nameError"></span>
+	
+			<label for="address">Mailing Address:</label>
+			<input type="text" id="address" name="address" placeholder="400 Bay Lane" required>
+			<span class="error" id="addressError"></span>
+	
+			<div class="address">
+				<div class="city">
+					<label for="city">City:</label>
+					<input type="text" id="city" name="city" required>
+					<span class="error" id="cityError"></span>
+				</div>
+				<div class="state">
+					<label for="state">State:</label>
+					<select id="state" name="state" required>
+						<option value="" disabled selected>Select State</option>
+						<option value="AL">Alabama</option>
+						<option value="AK">Alaska</option>
+						<option value="AZ">Arizona</option>
+						<option value="AR">Arkansas</option>
+						<option value="CA">California</option>
+						<option value="CO">Colorado</option>
+						<option value="CT">Connecticut</option>
+						<option value="DE">Delaware</option>
+						<option value="FL">Florida</option>
+						<option value="GA">Georgia</option>
+					</select>
+					<span class="error" id="stateError"></span>
+				</div>
+				<div class="state">
+					<label for="zip">Zip Code:</label>
+					<input type="text" id="zip" name="zip" pattern="\d{5}" required>
+					<span class="error" id="zipError"></span>
+				</div>
+			</div>
 
-            <label for="address">Address:</label>
-            <input type="text" id="address" name="address" placeholder="123 Main St, City, State ZIP"><br>
-
-            <label for="phone">Phone Number:</label>
-            <input type="text" id="phone" maxlength="14" required placeholder="(123) 456-7890"><br>
-
-            <label for="email">Email Address:</label>
-            <input type="email" id="email" name="email" placeholder="name@example.com" required><br>
-
-            <label for="birthDate">Birth Date:</label>
-            <input type="date" id="birthDate" name="birthDate" required><br>
-
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" placeholder="Enter your message here" required></textarea><br>
-
-            <label for="security">Security Question: What is 2 + 3?</label>
-            <input type="text" id="security" name="security" required><br>
+			<label for="phone">Phone Number:</label>
+			<input type="text" id="phone" name="phone" placeholder="(123)456-7890" required>
+			<span class="error" id="phoneError"></span>
+	
+			<label for="email">Email Address:</label>
+			<input type="email" id="email" name="email" placeholder="name@example.com" required>
+			<span class="error" id="emailError"></span>
+		
+			<label for="birthDate">Birth Date:</label>
+			<input type="date" id="birthDate" name="birthDate" required>
+			<span class="error" id="birthDateError"></span>
         
-            <div class="formButtons">
-            <input type="submit" value="Submit" onclick="validateForm()">
-            </div>
-<!--if error occurs try changing submit type to button -->
+			<label for="message">Message:</label>
+			<textarea id="message" name="message" rows="4" required></textarea>
+			<span class="error" id="messageError"></span>
+        
+			<label for="securityQuestion">What is the last name of the current president?</label>
+			<input type="text" id="securityQuestion" name="securityQuestion" required>
+			<span class="error" id="securityError"></span>
+		
+			<div class="formButtons">
+			<input type="button" value="Submit" onclick="validateForm()">
+			</div>
+		</form>
+	
+		<div id="confPage" class="confpage">
+			<h1>Confirmation page</h1>
+			<p>
+				<strong>Name:</strong> <span id="confName"></span><br>
+				<strong>Address:</strong> <span id="confAddress"></span><br>
+				<strong>City:</strong> <span id="confCity"></span><br>
+				<strong>State:</strong> <span id="confState"></span><br>
+				<strong>Zip Code:</strong> <span id="confZip"></span><br>
+				<strong>Phone Number:</strong> <span id="confPhone"></span><br>
+				<strong>Email Address:</strong> <span id="confEmail"></span><br>
+				<strong>Birth Date:</strong> <span id="confBirthDate"></span><br>
+				<strong>Message:</strong> <span id="confMessage"></span><br>
+			</p>
+			<div class="formButtons">
+			<input type="button" value="Edit" onclick="editForm()">
+			<input type="button" value="Send" onclick="sendForm()">
+			</div>
+		</div>
+	</div>
 
-        </form>
-    </div>
-    </main>
+    <script>
+        document.getElementById('phone').addEventListener('input', function (e) {
+            let input = e.target.value.replace(/\D/g, '');
+            if (input.length > 10) {
+                input = input.slice(0, 10);
+            }
+            let formatted = '';
+            if (input.length > 0) {
+                formatted += '(';
+            }
+            if (input.length > 3) {
+                formatted += input.slice(0, 3) + ') ';
+                formatted += input.slice(3, 6);
+            } else {
+                formatted += input.slice(0, 3);
+            }
+            if (input.length >= 6) {
+                formatted += '-' + input.slice(6, 10);
+            }
+            e.target.value = formatted;
+        });
 
+        document.getElementById('zip').addEventListener('input', function (e) {
+            let input = e.target.value.replace(/\D/g, '');
+            if (input.length > 5) {
+                input = input.slice(0, 5);
+            }
+            e.target.value = input;
+        });
+
+        function validateForm() {
+            let isValid = true;
+
+            let errors = document.querySelectorAll('.error');
+            errors.forEach(error => {
+                error.style.display = 'none';
+            });
+
+            let name = document.getElementById('name').value.trim();
+            let nameError = document.getElementById('nameError');
+            if (name.split(' ').length < 2) {
+                nameError.textContent = "Please enter both first and last names.";
+                nameError.style.display = 'block';
+                isValid = false;
+            }
+
+            let address = document.getElementById('address').value.trim();
+			let addressError = document.getElementById('addressError');
+            if (address === '') {
+                addressError.textContent = "Please enter your mailing address.";
+                addressError.style.display = 'block';
+                isValid = false;
+            }
+			
+            let city = document.getElementById('city').value.trim();
+			let cityError = document.getElementById('cityError');
+            if (city === '') {
+                cityError.textContent = "Please enter your city.";
+                cityError.style.display = 'block';
+                isValid = false;
+            }			
+            let state = document.getElementById('state').value;
+            let stateError = document.getElementById('stateError');
+			if (state === '') {
+                stateError.textContent = "Please select your state";
+                stateError.style.display = 'block';
+                isValid = false;
+            }
+			
+            let zip = document.getElementById('zip').value.trim();
+			let zipError = document.getElementById('zipError');
+            if (!/^\d{5}$/.test(zip)) {
+                zipError.textContent = "Please enter 5-digit zip code.";
+                zipError.style.display = 'block';
+                isValid = false;
+            }
+
+
+            let phone = document.getElementById('phone').value.trim().replace(/\D/g, '');
+            let phoneError = document.getElementById('phoneError');
+            if (phone.length !== 10) {
+                phoneError.textContent = "Please enter a valid 10-digit phone number.";
+                phoneError.style.display = 'block';
+                isValid = false;
+            }
+
+            let email = document.getElementById('email').value.trim();
+            let emailError = document.getElementById('emailError');
+            let emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (!emailPattern.test(email)) {
+                emailError.textContent = "Please enter a valid email address.";
+                emailError.style.display = 'block';
+                isValid = false;
+            }
+
+            let birthDate = document.getElementById('birthDate').value;
+            let birthDateError = document.getElementById('birthDateError');
+            if (birthDate === '') {
+                birthDateError.textContent = "Please enter your birth date.";
+                birthDateError.style.display = 'block';
+                isValid = false;
+            } else {
+                let selectedDate = new Date(birthDate);
+                let today = new Date();
+                if (selectedDate > today) {
+                    birthDateError.textContent = 'Invalid birthdate (cannot be in the future).';
+                    birthDateError.style.display = 'block';
+                    isValid = false;
+                }
+            }
+
+            let message = document.getElementById('message').value.trim();
+            let messageError = document.getElementById('messageError');
+            if (message === '') {
+                messageError.textContent = "Please enter a message.";
+                messageError.style.display = 'block';
+                isValid = false;
+            }
+
+            let securityAnswer = document.getElementById('securityQuestion').value.trim();
+            let securityError = document.getElementById('securityError');
+            const correctAnswer = 'biden'; 
+            if (securityAnswer === '') {
+                securityError.textContent = "Please answer the security question.";
+                securityError.style.display = 'block';
+                isValid = false;
+            } else if (securityAnswer.toLowerCase() !== correctAnswer.toLowerCase()) {
+                securityError.textContent = 'Incorrect answer, please try again.';
+                securityError.style.display = 'block';
+                isValid = false;
+            }
+
+            if (isValid) {
+                confSection();
+                return false;
+            }
+            return false;
+        }
+
+        function confSection() {
+            document.getElementById('contactForm').style.display = 'none';
+
+            document.getElementById('confName').textContent = document.getElementById('name').value.trim();
+            document.getElementById('confAddress').textContent = document.getElementById('address').value.trim();
+            document.getElementById('confCity').textContent = document.getElementById('city').value.trim();
+            document.getElementById('confState').textContent = document.getElementById('state').value;
+            document.getElementById('confZip').textContent = document.getElementById('zip').value.trim();
+            document.getElementById('confPhone').textContent = document.getElementById('phone').value.trim();
+            document.getElementById('confEmail').textContent = document.getElementById('email').value.trim();
+            document.getElementById('confBirthDate').textContent = document.getElementById('birthDate').value;
+            document.getElementById('confMessage').textContent = document.getElementById('message').value.trim();
+
+            document.getElementById('confPage').style.display = 'block';
+        }
+
+        function editForm() {
+            document.getElementById('confPage').style.display = 'none';
+            document.getElementById('contactForm').style.display = 'block';
+        }
+
+        function sendForm() {
+            let name = encodeURIComponent(document.getElementById('name').value.trim());
+            let address = encodeURIComponent(document.getElementById('address').value.trim());
+            let city = encodeURIComponent(document.getElementById('city').value.trim());
+            let state = encodeURIComponent(document.getElementById('state').value);
+            let zip = encodeURIComponent(document.getElementById('zip').value.trim());
+            let phone = encodeURIComponent(document.getElementById('phone').value.trim());
+            let email = encodeURIComponent(document.getElementById('email').value.trim());
+            let birthDate = encodeURIComponent(document.getElementById('birthDate').value);
+            let message = encodeURIComponent(document.getElementById('message').value.trim());
+
+            let mailtoLink = `mailto:support@stanfom.com?subject=Contact Form Submission&body=Name: ${name}%0AAddress: ${address}%0ACity: ${city}%0AState: ${state}%0AZip Code: ${zip}%0APhone Number: ${phone}%0AEmail Address: ${email}%0ABirth Date: ${birthDate}%0AMessage: ${message}`;
+
+            window.location.href = mailtoLink;
+        }
+    </script>
+	
+    <script>
+        document.querySelectorAll('nav ul li').forEach(function(menuItem) {
+            menuItem.addEventListener('mouseover', function() {
+                const dropdown = this.querySelector('.dropdown');
+                if (dropdown) {
+                    dropdown.classList.add('open-menu');
+                }
+            });
+
+            menuItem.addEventListener('mouseout', function() {
+                const dropdown = this.querySelector('.dropdown');
+                if (dropdown) {
+                    dropdown.classList.remove('open-menu');
+                }
+            });
+        });
+    </script>
+	
     <footer>
         <p>&copy; 2024 Created by Ryan Garcia-Hernandez</p>
-    </footer>
-
-    <script src="formValidation.js"></script>
+    </footer> 
+<script src="formValidation.js"></script>
 </body>
 </html>

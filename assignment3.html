@@ -62,7 +62,9 @@
     </header>
 
     <main>
-        <form id="userForm" action="mailto:your-email@example.com" method="post" onsubmit="return validateForm()">
+        <form id="userForm" 
+<!-- ction="mailto:your-email@example.com"-->
+<!-- method="post" onsubmit="return validateForm()"> -->
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" placeholder="First Last"><br>
 
@@ -83,8 +85,12 @@
 
             <label for="security">Security Question: What is 2 + 3?</label>
             <input type="text" id="security" name="security" required><br>
+        
+            <div class="formButtons">
+            <input type="submit" value="Submit" onclick="validateForm()">
+            <div>
+<!--if error occurs try changing submit type to button -->
 
-            <input type="submit" value="Submit">
         </form>
     </main>
 

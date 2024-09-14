@@ -1,5 +1,5 @@
 // Function to validate address
-function validateAddress(address) {
+/*function validateAddress(address) {
     const addressParts = address.split(',');
 
     // Ensure the address contains at least 3 parts: street, city, state+zip
@@ -139,7 +139,7 @@ document.getElementById('userForm').addEventListener('submit', function(event) {
     // Redirect to the confirmation page
     window.location.href = 'confirmation.html';
 });
-
+*/
 
 
 

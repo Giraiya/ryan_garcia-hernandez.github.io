@@ -101,13 +101,34 @@ function validateForm() {
         alert("Security question answer is incorrect.");
         return false;
     }
+    
+    const formData = {
+        name: name,
+        address: address,
+        phone: phone,
+        email: email,
+        birthDate: birthDate,
+        message: message,
+        security: security
+    };
 
-    // If all validation passes, return true
-    return true;
+    localStorage.setItem('formData', JSON.stringify(formData));
+
+    window.location.href = 'confirmation.html';
+    return false; // Prevent default form submission
 }
 
 // Real-time phone number formatting (input mask)
 document.getElementById('phone').addEventListener('input', function(e) {
+    let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+    e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+});
+    // If all validation passes, return true
+  //-----> uncomment  return true;
+// ----> }
+
+// Real-time phone number formatting (input mask)
+/* document.getElementById('phone').addEventListener('input', function(e) {
     let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
     e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
 });

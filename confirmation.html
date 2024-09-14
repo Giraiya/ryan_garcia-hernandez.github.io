@@ -16,48 +16,25 @@
     </header>
 
     <main>
-        <div id="contactForm">
+        <div id="confPage" class="confPage">
             <!-- No need for a form here; data is just displayed -->
             <p><strong>Name:</strong> <span id="confName"></span></p>
             <p><strong>Address:</strong> <span id="confAddress"></span></p>
             <p><strong>City:</strong> <span id="confCity"></span></p>
             <p><strong>State:</strong> <span id="confState"></span></p>
+            <strong>Zip Code:</strong> <span id="confZip"></span><br>
+			<strong>Phone Number:</strong> <span id="confPhone"></span><br>
+			<strong>Email Address:</strong> <span id="confEmail"></span><br>
+			<strong>Birth Date:</strong> <span id="confBirthDate"></span><br>
+			<strong>Message:</strong> <span id="confMessage"></span><br>
+
+            <div class="formButtons">
+			<input type="button" value="Edit" onclick="editForm()">
+			<input type="button" value="Send" onclick="sendForm()">
+			</div>
+		</div>
            <!-- <form id="userForm" onsubmit="return validateForm()">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required><br>
-                <span class="error" id="nameError"></span>
-
-                <label for="address">Address:</label>
-                <input type="text" id="address" name="address" required><br>
-                <span class="error" id="addressError"></span>
-
-                <label for="city">City:</label>
-                <input type="text" id="city" name="city" required><br>
-                <span class="error" id="cityError"></span>
-
-                <label for="state">State:</label>
-                <input type="text" id="state" name="state" required><br>
-                <span class="error" id="stateError"></span>
-
-                <label for="zip">Zip Code:</label>
-                <input type="text" id="zip" name="zip" required><br>
-                <span class="error" id="zipError"></span>
-
-                <label for="phone">Phone Number:</label>
-                <input type="text" id="phone" name="phone" required><br>
-                <span class="error" id="phoneError"></span>
-
-                <label for="email">Email Address:</label>
-                <input type="email" id="email" name="email" required><br>
-                <span class="error" id="emailError"></span>
-
-                <label for="birthDate">Birth Date:</label>
-                <input type="date" id="birthDate" name="birthDate" required><br>
-                <span class="error" id="birthDateError"></span>
-
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" required></textarea><br>
-                <span class="error" id="messageError"></span>
+              
 
                 <input type="button" value="Submit" onclick="validateForm()">
             </form>
@@ -77,164 +54,11 @@
 
             <button onclick="sendForm()">Send Email</button>
             <button onclick="editForm()">Edit Information</button>
-        </div>
-    </main>
+        </div> -->
+    </main> 
 
     <footer>
         <p>&copy; 2024 Created by Ryan Garcia-Hernandez</p>
     </footer>
 
-    <script>
-        function validateForm() {
-            let isValid = true;
-
-            let errors = document.querySelectorAll('.error');
-            errors.forEach(error => {
-                error.style.display = 'none';
-            });
-
-            let name = document.getElementById('name').value.trim();
-            let nameError = document.getElementById('nameError');
-            if (name.split(' ').length < 2) {
-                nameError.textContent = "Please enter both first and last names.";
-                nameError.style.display = 'block';
-                isValid = false;
-            }
-
-            let address = document.getElementById('address').value.trim();
-            let addressError = document.getElementById('addressError');
-            if (address === '') {
-                addressError.textContent = "Please enter your mailing address.";
-                addressError.style.display = 'block';
-                isValid = false;
-            }
-
-            let city = document.getElementById('city').value.trim();
-            let cityError = document.getElementById('cityError');
-            if (city === '') {
-                cityError.textContent = "Please enter your city.";
-                cityError.style.display = 'block';
-                isValid = false;
-            }
-
-            let state = document.getElementById('state').value;
-            let stateError = document.getElementById('stateError');
-            if (state === '') {
-                stateError.textContent = "Please enter your state.";
-                stateError.style.display = 'block';
-                isValid = false;
-            }
-
-            let zip = document.getElementById('zip').value.trim();
-            let zipError = document.getElementById('zipError');
-            if (!/^\d{5}$/.test(zip)) {
-                zipError.textContent = "Please enter a 5-digit zip code.";
-                zipError.style.display = 'block';
-                isValid = false;
-            }
-
-            let phone = document.getElementById('phone').value.trim().replace(/\D/g, '');
-            let phoneError = document.getElementById('phoneError');
-            if (phone.length !== 10) {
-                phoneError.textContent = "Please enter a valid 10-digit phone number.";
-                phoneError.style.display = 'block';
-                isValid = false;
-            }
-
-            let email = document.getElementById('email').value.trim();
-            let emailError = document.getElementById('emailError');
-            let emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-            if (!emailPattern.test(email)) {
-                emailError.textContent = "Please enter a valid email address.";
-                emailError.style.display = 'block';
-                isValid = false;
-            }
-
-            let birthDate = document.getElementById('birthDate').value;
-            let birthDateError = document.getElementById('birthDateError');
-            if (birthDate === '') {
-                birthDateError.textContent = "Please enter your birth date.";
-                birthDateError.style.display = 'block';
-                isValid = false;
-            } else {
-                let selectedDate = new Date(birthDate);
-                let today = new Date();
-                if (selectedDate > today) {
-                    birthDateError.textContent = 'Invalid birthdate (cannot be in the future).';
-                    birthDateError.style.display = 'block';
-                    isValid = false;
-                }
-            }
-
-            let message = document.getElementById('message').value.trim();
-            let messageError = document.getElementById('messageError');
-            if (message === '') {
-                messageError.textContent = "Please enter a message.";
-                messageError.style.display = 'block';
-                isValid = false;
-            }
-
-            if (isValid) {
-                confSection();
-                return false; // Prevent form from submitting
-            }
-            return false; // Prevent form from submitting
-        }
-
-        function confSection() {
-            document.getElementById('contactForm').style.display = 'none';
-
-            document.getElementById('confName').textContent = document.getElementById('name').value.trim();
-            document.getElementById('confAddress').textContent = document.getElementById('address').value.trim();
-            document.getElementById('confCity').textContent = document.getElementById('city').value.trim();
-            document.getElementById('confState').textContent = document.getElementById('state').value;
-            document.getElementById('confZip').textContent = document.getElementById('zip').value.trim();
-            document.getElementById('confPhone').textContent = document.getElementById('phone').value.trim();
-            document.getElementById('confEmail').textContent = document.getElementById('email').value.trim();
-            document.getElementById('confBirthDate').textContent = document.getElementById('birthDate').value;
-            document.getElementById('confMessage').textContent = document.getElementById('message').value.trim();
-
-            document.getElementById('confPage').style.display = 'block';
-        }
-
-        function editForm() {
-            document.getElementById('confPage').style.display = 'none';
-            document.getElementById('contactForm').style.display = 'block';
-        }
-
-        function sendForm() {
-            let name = encodeURIComponent(document.getElementById('name').value.trim());
-            let address = encodeURIComponent(document.getElementById('address').value.trim());
-            let city = encodeURIComponent(document.getElementById('city').value.trim());
-            let state = encodeURIComponent(document.getElementById('state').value);
-            let zip = encodeURIComponent(document.getElementById('zip').value.trim());
-            let phone = encodeURIComponent(document.getElementById('phone').value.trim());
-            let email = encodeURIComponent(document.getElementById('email').value.trim());
-            let birthDate = encodeURIComponent(document.getElementById('birthDate').value);
-            let message = encodeURIComponent(document.getElementById('message').value.trim());
-
-            let mailtoLink = `mailto:ryan_garcia-hernandez@daytonastate.edu?subject=Contact Form Submission&body=Name: ${name}%0AAddress: ${address}%0ACity: ${city}%0AState: ${state}%0AZip Code: ${zip}%0APhone Number: ${phone}%0AEmail Address: ${email}%0ABirth Date: ${birthDate}%0AMessage: ${message}`;
-
-            window.location.href = mailtoLink;
-        }
-    </script>
-    
-    <script>
-        document.querySelectorAll('nav ul li').forEach(function(menuItem) {
-            menuItem.addEventListener('mouseover', function() {
-                const dropdown = this.querySelector('.dropdown');
-                if (dropdown) {
-                    dropdown.classList.add('open-menu');
-                }
-            });
-
-            menuItem.addEventListener('mouseout', function() {
-                const dropdown = this.querySelector('.dropdown');
-                if (dropdown) {
-                    dropdown.classList.remove('open-menu');
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+   

@@ -1,5 +1,200 @@
+document.getElementById('phone').addEventListener('input', function (e) {
+            let input = e.target.value.replace(/\D/g, '');
+            if (input.length > 10) {
+                input = input.slice(0, 10);
+            }
+            let formatted = '';
+            if (input.length > 0) {
+                formatted += '(';
+            }
+            if (input.length > 3) {
+                formatted += input.slice(0, 3) + ') ';
+                formatted += input.slice(3, 6);
+            } else {
+                formatted += input.slice(0, 3);
+            }
+            if (input.length >= 6) {
+                formatted += '-' + input.slice(6, 10);
+            }
+            e.target.value = formatted;
+        });
+
+        document.getElementById('zip').addEventListener('input', function (e) {
+            let input = e.target.value.replace(/\D/g, '');
+            if (input.length > 5) {
+                input = input.slice(0, 5);
+            }
+            e.target.value = input;
+        });
+
+        function validateForm() {
+            let isValid = true;
+
+            let errors = document.querySelectorAll('.error');
+            errors.forEach(error => {
+                error.style.display = 'none';
+            });
+
+            let name = document.getElementById('name').value.trim();
+            let nameError = document.getElementById('nameError');
+            if (name.split(' ').length < 2) {
+                nameError.textContent = "Please enter both first and last names.";
+                nameError.style.display = 'block';
+                isValid = false;
+            }
+
+            let address = document.getElementById('address').value.trim();
+			let addressError = document.getElementById('addressError');
+            if (address === '') {
+                addressError.textContent = "Please enter your mailing address.";
+                addressError.style.display = 'block';
+                isValid = false;
+            }
+			
+            let city = document.getElementById('city').value.trim();
+			let cityError = document.getElementById('cityError');
+            if (city === '') {
+                cityError.textContent = "Please enter your city.";
+                cityError.style.display = 'block';
+                isValid = false;
+            }			
+            let state = document.getElementById('state').value;
+            let stateError = document.getElementById('stateError');
+			if (state === '') {
+                stateError.textContent = "Please select your state";
+                stateError.style.display = 'block';
+                isValid = false;
+            }
+			
+            let zip = document.getElementById('zip').value.trim();
+			let zipError = document.getElementById('zipError');
+            if (!/^\d{5}$/.test(zip)) {
+                zipError.textContent = "Please enter 5-digit zip code.";
+                zipError.style.display = 'block';
+                isValid = false;
+            }
+
+
+            let phone = document.getElementById('phone').value.trim().replace(/\D/g, '');
+            let phoneError = document.getElementById('phoneError');
+            if (phone.length !== 10) {
+                phoneError.textContent = "Please enter a valid 10-digit phone number.";
+                phoneError.style.display = 'block';
+                isValid = false;
+            }
+
+            let email = document.getElementById('email').value.trim();
+            let emailError = document.getElementById('emailError');
+            let emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (!emailPattern.test(email)) {
+                emailError.textContent = "Please enter a valid email address.";
+                emailError.style.display = 'block';
+                isValid = false;
+            }
+
+            let birthDate = document.getElementById('birthDate').value;
+            let birthDateError = document.getElementById('birthDateError');
+            if (birthDate === '') {
+                birthDateError.textContent = "Please enter your birth date.";
+                birthDateError.style.display = 'block';
+                isValid = false;
+            } else {
+                let selectedDate = new Date(birthDate);
+                let today = new Date();
+                if (selectedDate > today) {
+                    birthDateError.textContent = 'Invalid birthdate (cannot be in the future).';
+                    birthDateError.style.display = 'block';
+                    isValid = false;
+                }
+            }
+
+            let message = document.getElementById('message').value.trim();
+            let messageError = document.getElementById('messageError');
+            if (message === '') {
+                messageError.textContent = "Please enter a message.";
+                messageError.style.display = 'block';
+                isValid = false;
+            }
+
+            let securityAnswer = document.getElementById('securityQuestion').value.trim();
+            let securityError = document.getElementById('securityError');
+            const correctAnswer = 'biden'; 
+            if (securityAnswer === '') {
+                securityError.textContent = "Please answer the security question.";
+                securityError.style.display = 'block';
+                isValid = false;
+            } else if (securityAnswer.toLowerCase() !== correctAnswer.toLowerCase()) {
+                securityError.textContent = 'Incorrect answer, please try again.';
+                securityError.style.display = 'block';
+                isValid = false;
+            }
+
+            if (isValid) {
+                confSection();
+                return false;
+            }
+            return false;
+        }
+
+        function confSection() {
+            document.getElementById('contactForm').style.display = 'none';
+
+            document.getElementById('confName').textContent = document.getElementById('name').value.trim();
+            document.getElementById('confAddress').textContent = document.getElementById('address').value.trim();
+            document.getElementById('confCity').textContent = document.getElementById('city').value.trim();
+            document.getElementById('confState').textContent = document.getElementById('state').value;
+            document.getElementById('confZip').textContent = document.getElementById('zip').value.trim();
+            document.getElementById('confPhone').textContent = document.getElementById('phone').value.trim();
+            document.getElementById('confEmail').textContent = document.getElementById('email').value.trim();
+            document.getElementById('confBirthDate').textContent = document.getElementById('birthDate').value;
+            document.getElementById('confMessage').textContent = document.getElementById('message').value.trim();
+
+            document.getElementById('confPage').style.display = 'block';
+        }
+
+        function editForm() {
+            document.getElementById('confPage').style.display = 'none';
+            document.getElementById('contactForm').style.display = 'block';
+        }
+
+        function sendForm() {
+            let name = encodeURIComponent(document.getElementById('name').value.trim());
+            let address = encodeURIComponent(document.getElementById('address').value.trim());
+            let city = encodeURIComponent(document.getElementById('city').value.trim());
+            let state = encodeURIComponent(document.getElementById('state').value);
+            let zip = encodeURIComponent(document.getElementById('zip').value.trim());
+            let phone = encodeURIComponent(document.getElementById('phone').value.trim());
+            let email = encodeURIComponent(document.getElementById('email').value.trim());
+            let birthDate = encodeURIComponent(document.getElementById('birthDate').value);
+            let message = encodeURIComponent(document.getElementById('message').value.trim());
+
+            let mailtoLink = `mailto:ryan_garcia-hernandez@daytonastate.edu?subject=Contact Form Submission&body=Name: ${name}%0AAddress: ${address}%0ACity: ${city}%0AState: ${state}%0AZip Code: ${zip}%0APhone Number: ${phone}%0AEmail Address: ${email}%0ABirth Date: ${birthDate}%0AMessage: ${message}`;
+
+            window.location.href = mailtoLink;
+        }
+    
+	
+    
+        document.querySelectorAll('nav ul li').forEach(function(menuItem) {
+            menuItem.addEventListener('mouseover', function() {
+                const dropdown = this.querySelector('.dropdown');
+                if (dropdown) {
+                    dropdown.classList.add('open-menu');
+                }
+            });
+
+            menuItem.addEventListener('mouseout', function() {
+                const dropdown = this.querySelector('.dropdown');
+                if (dropdown) {
+                    dropdown.classList.remove('open-menu');
+                }
+            });
+        });
+
+
+
 // Function to validate address
-function validateAddress(address) {
+/* function validateAddress(address) {
     const addressParts = address.split(',');
 
     // Ensure the address contains at least 3 parts: street, city, state+zip

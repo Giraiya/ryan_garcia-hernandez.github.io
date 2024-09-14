@@ -347,7 +347,7 @@ document.getElementById('userForm').addEventListener('submit', function(event) {
         birthDate: document.getElementById("birthDate").value,
         message: document.getElementById("message").value,
         security: document.getElementById("security").value
-    };
+    }; */
 
     // Store form data in local storage for the confirmation page
     localStorage.setItem('formData', JSON.stringify(formData));

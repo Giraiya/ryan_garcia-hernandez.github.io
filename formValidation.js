@@ -137,7 +137,7 @@
         }
 
         function confSection() {
-            document.getElementById('contactForm').style.display = 'none';
+            //document.getElementById('contactForm').style.display = 'none';
 
             document.getElementById('confName').textContent = document.getElementById('name').value.trim();
             document.getElementById('confAddress').textContent = document.getElementById('address').value.trim();
@@ -149,7 +149,7 @@
             document.getElementById('confBirthDate').textContent = document.getElementById('birthDate').value;
             document.getElementById('confMessage').textContent = document.getElementById('message').value.trim();
 
-            document.getElementById('confPage').style.display = 'block';
+           // document.getElementById('confPage').style.display = 'block';
         }
 
         function editForm() {
@@ -354,7 +354,7 @@ document.getElementById('userForm').addEventListener('submit', function(event) {
 
     // Redirect to the confirmation page
    // window.location.href = 'confirmation.html';
-}); 
+//}); 
 
 
 

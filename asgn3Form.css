@@ -78,7 +78,7 @@ input[type="submit"]:hover {
 }
 
 .state label {
-    font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+    font-family: Arial, sans-serif;
     font-size: 1.2em;
     color: #333;
     margin-bottom: 5px;
@@ -98,10 +98,14 @@ input[type="submit"]:hover {
     appearance: none; /* Remove default styling for other browsers */
 }
 
-/* Optional: add a custom arrow to the select element */
-.state select::-ms-expand {
-    display: none; /* Remove default arrow for Internet Explorer */
+#confPage {
+    display: none; /* Hide the confirmation page initially */
 }
+
+/* Optional: add a custom arrow to the select element */
+/*.state select::-ms-expand {
+    display: none; /* Remove default arrow for Internet Explorer */
+/*} 
 
 /* Style for the select element when focused */
 .state select:focus {
@@ -127,9 +131,7 @@ input.invalid {
     border-color: red;
 }
 
-#confPage {
-    display: none; /* Hide the confirmation page initially */
-}
+
 
 
 /* Media Queries for Responsive Design */

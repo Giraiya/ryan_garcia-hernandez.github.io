@@ -353,7 +353,7 @@ document.getElementById('userForm').addEventListener('submit', function(event) {
  //   localStorage.setItem('formData', JSON.stringify(formData));
 
     // Redirect to the confirmation page
-  //  window.location.href = 'confirmation.html';
+    window.location.href = 'confirmation.html';
 //}); 
 
 

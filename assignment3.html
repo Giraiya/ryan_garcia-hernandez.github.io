@@ -235,12 +235,22 @@
             }
 
             let address = document.getElementById('address').value.trim();
-			let addressError = document.getElementById('addressError');
-            if (address === '') {
-                addressError.textContent = "Please enter your mailing address.";
-                addressError.style.display = 'block';
-                isValid = false;
-            }
+	    let addressError = document.getElementById('addressError');
+		
+	    // Regular expression: One or more digits followed by one or more letters (optional spaces allowed)
+	    let addressPattern = /^\d+\s+[A-Za-z\s]+$/;
+		
+	    if (address === '') {
+		addressError.textContent = "Please enter your mailing address.";
+		addressError.style.display = 'block';
+		isValid = false;
+	    } else if (!addressPattern.test(address)) {
+		addressError.textContent = "Please enter a valid street number and street name (e.g., '123 Main St').";
+		addressError.style.display = 'block';
+		isValid = false;
+	    } else {
+		addressError.style.display = 'none'; // Hide the error if valid
+	    }
 			
             let city = document.getElementById('city').value.trim();
 			let cityError = document.getElementById('cityError');

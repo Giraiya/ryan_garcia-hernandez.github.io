@@ -100,6 +100,7 @@ input[type="submit"]:hover {
 
 #confPage {
     display: none; /* Hide the confirmation page initially */
+    display: block; /* remove if page doesnt appear */
 }
 
 /* Optional: add a custom arrow to the select element */

@@ -98,10 +98,70 @@ input[type="submit"]:hover {
     appearance: none; /* Remove default styling for other browsers */
 }
 
-#confPage {
-    display: none; /* Hide the confirmation page initially */
-    display: block; /* remove if page doesnt appear */
+.confpage {
+    display: none; /* Initially hidden, will be displayed after form validation */
+    background-color: #f4f4f4; /* Light gray background to differentiate the section */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
 }
+
+.confpage h1 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.confpage p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+}
+
+.confpage strong {
+    color: #333; /* Make the labels (e.g. Name, Address) bold and a bit darker */
+}
+
+.formButtons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.formButtons input[type="button"] {
+    background-color: #4CAF50; /* Green background for the buttons */
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.formButtons input[type="button"]:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+}
+
+@media screen and (max-width: 768px) {
+    .confpage {
+        padding: 15px;
+        margin: 10px auto;
+    }
+
+    .confpage p {
+        font-size: 14px;
+    }
+
+    .formButtons input[type="button"] {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
 
 /* Optional: add a custom arrow to the select element */
 /*.state select::-ms-expand {

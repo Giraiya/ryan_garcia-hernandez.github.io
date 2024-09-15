@@ -159,7 +159,7 @@
 			<textarea id="message" name="message" rows="4" required></textarea>
 			<span class="error" id="messageError"></span>
         
-			<label for="securityQuestion">What is the last name of the current president?</label>
+			<label for="securityQuestion">What is 2 + 5?</label>
 			<input type="text" id="securityQuestion" name="securityQuestion" required>
 			<span class="error" id="securityError"></span>
 		
@@ -319,7 +319,7 @@
 
             let securityAnswer = document.getElementById('securityQuestion').value.trim();
             let securityError = document.getElementById('securityError');
-            const correctAnswer = 'biden'; 
+            const correctAnswer = '7'; 
             if (securityAnswer === '') {
                 securityError.textContent = "Please answer the security question.";
                 securityError.style.display = 'block';

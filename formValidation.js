@@ -1,4 +1,4 @@
- document.getElementById('phone').addEventListener('input', function (e) {
+/* document.getElementById('phone').addEventListener('input', function (e) {
             let input = e.target.value.replace(/\D/g, '');
             if (input.length > 10) {
                 input = input.slice(0, 10);
@@ -350,11 +350,11 @@ document.getElementById('userForm').addEventListener('submit', function(event) {
     };*/
 
     // Store form data in local storage for the confirmation page
-    localStorage.setItem('formData', JSON.stringify(formData));
+ //   localStorage.setItem('formData', JSON.stringify(formData));
 
     // Redirect to the confirmation page
-    window.location.href = 'confirmation.html';
-}); 
+  //  window.location.href = 'confirmation.html';
+//}); 
 
 
 

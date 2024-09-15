@@ -350,10 +350,10 @@ document.getElementById('userForm').addEventListener('submit', function(event) {
     };*/
 
     // Store form data in local storage for the confirmation page
-    localStorage.setItem('formData', JSON.stringify(formData));
+   // localStorage.setItem('formData', JSON.stringify(formData));
 
     // Redirect to the confirmation page
-    window.location.href = 'confirmation.html';
+   // window.location.href = 'confirmation.html';
 }); 
 
 

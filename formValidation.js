@@ -354,7 +354,7 @@ document.getElementById('userForm').addEventListener('submit', function(event) {
 
     // Redirect to the confirmation page
    // window.location.href = 'confirmation.html';
-//}); 
+}); 
 
 
 

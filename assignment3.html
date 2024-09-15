@@ -320,7 +320,23 @@
                 isValid = false;
             }
 
-            if (isValid) {
+	     if (isValid) {
+                document.getElementById('confName').textContent = name;
+                document.getElementById('confAddress').textContent = address;
+                document.getElementById('confCity').textContent = city;
+                document.getElementById('confState').textContent = state;
+                document.getElementById('confZip').textContent = zip;
+                document.getElementById('confPhone').textContent = phone;
+                document.getElementById('confEmail').textContent = email;
+                document.getElementById('confBirthDate').textContent = birthDate;
+                document.getElementById('confMessage').textContent = message;
+
+                document.querySelector('form').style.display = 'none';
+                document.getElementById('confPage').style.display = 'block';
+            }
+        }
+          
+	 /* if (isValid) {
                 confSection();
                 return false;
             }
@@ -341,7 +357,7 @@
             document.getElementById('confMessage').textContent = document.getElementById('message').value.trim();
 
             document.getElementById('confPage').style.display = 'block';
-        }
+        } */
 
         function editForm() {
             //document.getElementById('confPage').style.display = 'none';

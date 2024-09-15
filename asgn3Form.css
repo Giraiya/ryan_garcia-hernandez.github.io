@@ -127,6 +127,11 @@ input.invalid {
     border-color: red;
 }
 
+#confPage {
+    display: none; /* Hide the confirmation page initially */
+}
+
+
 /* Media Queries for Responsive Design */
 @media (max-width: 768px) {
     .nav-links a {

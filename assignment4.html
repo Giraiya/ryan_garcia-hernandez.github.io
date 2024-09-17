@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JavaScript calculator for exponential growth equation with plotting capability using Chart.js">
+    <meta name="keywords" content="JavaScript, calculator, plotting, Chart.js, exponential growth, web systems">
+    <meta name="author" content="Your Name">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="index, follow">
+
+     <link rel="stylesheet" href="styles.css"> 
+
+    <!-- For Accessibility (ADA compliance) -->
+    <title>Exponential Assignment 4 - Growth Calculator </title>
+   
+
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self';">
+
+    <!-- Include Chart.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+        }
+        form label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        input[type="number"], input[type="button"] {
+            margin-top: 5px;
+            padding: 8px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        canvas {
+            margin-top: 20px;
+        }
+        .chart-container {
+            width: 100%;
+            height: 400px;
+        }
+        /* High-contrast mode support for accessibility */
+        @media (prefers-contrast: high) {
+            body {
+                background-color: #000;
+                color: #fff;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Main content of the page -->
+    <div class="container">
+        <h1>Exponential Growth Calculator</h1>
+        <p>This calculator solves and plots the exponential growth equation: <strong>y = a * e^(b * x)</strong>.</p>
+        
+        <!-- Form for the calculator -->
+        <form id="calculatorForm" aria-labelledby="calculatorForm">
+            <label for="a">Enter value for <strong>a</strong> (e.g., 1):</label>
+            <input type="number" id="a" name="a" value="1" aria-required="true" required>
+
+            <label for="b">Enter value for <strong>b</strong> (e.g., 0.5):</label>
+            <input type="number" id="b" name="b" value="0.5" aria-required="true" required>
+
+            <label for="xStart">Enter starting value for <strong>x</strong> (e.g., 0):</label>
+            <input type="number" id="xStart" name="xStart" value="0" aria-required="true" required>
+
+            <label for="xEnd">Enter ending value for <strong>x</strong> (e.g., 10):</label>
+            <input type="number" id="xEnd" name="xEnd" value="10" aria-required="true" required>
+
+            <label for="xStep">Enter step size for <strong>x</strong> (e.g., 1):</label>
+            <input type="number" id="xStep" name="xStep" value="1" aria-required="true" required>
+
+            <input type="button" value="Calculate and Plot" onclick="calculateAndPlot()">
+        </form>
+
+        <!-- Placeholder for the chart -->
+        <div class="chart-container">
+            <canvas id="myChart" aria-label="Chart plotting the calculated exponential growth values"></canvas>
+        </div>
+    </div>
+
+    <!-- JavaScript code to perform the calculations and generate the plot -->
+    <script>
+        function calculateAndPlot() {
+            // Get user inputs
+            let a = parseFloat(document.getElementById('a').value);
+            let b = parseFloat(document.getElementById('b').value);
+            let xStart = parseFloat(document.getElementById('xStart').value);
+            let xEnd = parseFloat(document.getElementById('xEnd').value);
+            let xStep = parseFloat(document.getElementById('xStep').value);
+
+            // Initialize arrays for the x and y values
+            let xValues = [];
+            let yValues = [];
+
+            // Calculate y = a * e^(b * x) for each x in the range
+            for (let x = xStart; x <= xEnd; x += xStep) {
+                let y = a * Math.exp(b * x);
+                xValues.push(x);
+                yValues.push(y);
+            }
+
+            // Plot using Chart.js
+            let ctx = document.getElementById('myChart').getContext('2d');
+
+            // Destroy existing chart instance to avoid duplication
+            if (window.myChart) {
+                window.myChart.destroy();
+            }
+
+            // Create a new line chart
+            window.myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        label: `y = ${a} * e^(${b} * x)`,
+                        data: yValues,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        fill: true,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'X'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Y'
+                            }
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Exponential Growth Plot'
+                        },
+                        tooltip: {
+                            enabled: true,
+                            callbacks: {
+                                label: function(tooltipItem) {
+                                    return `y: ${tooltipItem.raw}`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

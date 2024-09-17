@@ -146,79 +146,80 @@
 
     <!-- JavaScript code to perform the calculations and generate the plot -->
     <script>
-        function calculateAndPlot() {
-            // Get user inputs
-            let a = parseFloat(document.getElementById('a').value);
-            let b = parseFloat(document.getElementById('b').value);
-            let xStart = parseFloat(document.getElementById('xStart').value);
-            let xEnd = parseFloat(document.getElementById('xEnd').value);
-            let xStep = parseFloat(document.getElementById('xStep').value);
+       function calculateAndPlot() {
+        // Get user inputs
+        let a = parseFloat(document.getElementById('a').value);
+        let b = parseFloat(document.getElementById('b').value);
+        let xStart = parseFloat(document.getElementById('xStart').value);
+        let xEnd = parseFloat(document.getElementById('xEnd').value);
+        let xStep = parseFloat(document.getElementById('xStep').value);
 
-            // Initialize arrays for the x and y values
-            let xValues = [];
-            let yValues = [];
+        // Initialize arrays for the x and y values
+        let xValues = [];
+        let yValues = [];
 
-            // Calculate y = a * e^(b * x) for each x in the range
-            for (let x = xStart; x <= xEnd; x += xStep) {
-                let y = a * Math.exp(b * x);
-                xValues.push(x);
-                yValues.push(y);
-            }
+        // Calculate y = a * e^(b * x) for each x in the range
+        for (let x = xStart; x <= xEnd; x += xStep) {
+            let y = a * Math.exp(b * x);
+            xValues.push(x);
+            yValues.push(y);
+        }
 
-            // Plot using Chart.js
-            let ctx = document.getElementById('myChart').getContext('2d');
+        // Get the context of the canvas for Chart.js
+        let ctx = document.getElementById('myChart').getContext('2d');
 
-            // Destroy existing chart instance to avoid duplication
-            if (window.myChart) {
-                window.myChart.destroy();
-            }
+        // Check if a previous chart exists, if so destroy it
+        if (window.myChart instanceof Chart) {
+            window.myChart.destroy();
+        }
 
-            // Create a new line chart
-            window.myChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: xValues,
-                    datasets: [{
-                        label: `y = ${a} * e^(${b} * x)`,
-                        data: yValues,
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        fill: true,
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'X'
-                            }
-                        },
-                        y: {
-                            title: {
-                                display: true,
-                                text: 'Y'
-                            }
-                        }
-                    },
-                    plugins: {
+        // Create a new line chart
+        window.myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: xValues,
+                datasets: [{
+                    label: `y = ${a} * e^(${b} * x)`,
+                    data: yValues,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    fill: true,
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
                         title: {
                             display: true,
-                            text: 'Exponential Growth Plot'
-                        },
-                        tooltip: {
-                            enabled: true,
-                            callbacks: {
-                                label: function(tooltipItem) {
-                                    return `y: ${tooltipItem.raw}`;
-                                }
+                            text: 'X'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Y'
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Exponential Growth Plot'
+                    },
+                    tooltip: {
+                        enabled: true,
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return `y: ${tooltipItem.raw}`;
                             }
                         }
                     }
                 }
-            });
-        }
+            }
+        });
+    }
+
     </script>
 </body>
 </html>

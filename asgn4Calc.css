@@ -230,8 +230,8 @@ form {
     max-width: 600px;
     /*text-align: center;*/
     overflow-y: auto;
-    display: grid;
-    grid-template-columns: 1fr 2fr; /* Create two columns: 1 for label, 1 for input */
+   /* display: grid; */
+   /* grid-template-columns: 1fr 2fr; */ /* Create two columns: 1 for label, 1 for input */
     grid-gap: 10px; /* Space between label and input fields */
     margin: 0 auto;
 }

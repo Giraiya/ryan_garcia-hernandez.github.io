@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="JavaScript calculator for exponential growth equation with plotting capability using Chart.js">
@@ -9,17 +9,15 @@
     <meta name="author" content="Your Name">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <title>Exponential Assignment 4 - Growth Calculator </title>
-    <link rel="stylesheet" href="styles.css" > 
+    <title>Exponential Assignment 4 - Growth Calculator</title>
+    <link rel="stylesheet" href="styles.css"> 
     <link rel="stylesheet" href="asgn4Calc.css">
 
-    <!-- For Accessibility (ADA compliance)-->
+    <!-- For Accessibility (ADA compliance) -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net/npm/chart.js; style-src 'self';">
 
     <!-- Include Chart.js from CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
-
-    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -27,155 +25,157 @@
         <h1>Assignment 4 - Growth Calculator</h1>
         <nav>
             <ul class="nav-links">
-                <li><a href="Index.html">Home</a>
+                <li><a href="Index.html">Home</a></li>
+                <li>
+                    <a href="#">My Classes</a>
+                    <ul class="dropdown-content">
+                        <li><a href="class1.html">Class 1</a></li>
+                        <li><a href="class2.html">Class 2</a></li>
+                    </ul>
                 </li>
-                <li><a href="#">My Classes</a>
-                    <div class="dropdown-content">
-                        <a href="class1.html">Class 1</a>
-                        <a href="class2.html">Class 2</a>
-                    </div>
+                <li>
+                    <a href="#">My Assignments</a>
+                    <ul class="dropdown-content">
+                        <li><a href="assignment1.html">Assignment 1</a></li>
+                        <li><a href="assignment2.html">Assignment 2</a></li>
+                        <li><a href="assignment3.html">Assignment 3</a></li>
+                        <li><a href="assignment4.html">Assignment 4</a></li>
+                        <!-- Additional assignments -->
+                    </ul>
                 </li>
-                <li><a href="#">My Assignments</a>
-                    <div class="dropdown-content">
-                        <a href="assignment1.html">Assignment 1</a>
-                        <a href="assignment2.html">Assignment 2</a>
-                        <a href="assignment3.html">Assignment 3</a>
-                        <a href="assignment4.html">Assignment 4</a>
-                        <a href="assignment5.html">Assignment 5</a>
-                        <a href="assignment6.html">Assignment 6</a>
-                        <a href="assignment7.html">Assignment 7</a>
-                        <a href="assignment8.html">Assignment 8</a>
-                        <a href="assignment9.html">Assignment 9</a>
-                        <a href="assignment10.html">Assignment 10</a>
-                        <a href="assignment11.html">Assignment 11</a>
-                        <a href="assignment12.html">Assignment 12</a>
-                        <a href="assignment13.html">Assignment 13</a>
-                        <a href="assignment14.html">Assignment 14</a>
-                        <a href="assignment15.html">Assignment 15</a>
-                    </div>
+                <li>
+                    <a href="#">My Favorite Sites</a>
+                    <ul class="dropdown-content">
+                        <li><a href="https://www.example1.com">Favorite Site 1</a></li>
+                        <li><a href="https://www.example2.com">Favorite Site 2</a></li>
+                    </ul>
                 </li>
-                <li><a href="#">My Favorite Sites</a>
-                    <div class="dropdown-content">
-                        <a href="https://www.example1.com">Favorite Site 1</a>
-                        <a href="https://www.example2.com">Favorite Site 2</a>
-                    </div>
-                </li>
-                <li><a href="#">Programming Sites</a>
-                    <div class="dropdown-content">
-                        <a href="https://www.programming1.com">Programming Site 1</a>
-                        <a href="https://www.programming2.com">Programming Site 2</a>
-                    </div>
+                <li>
+                    <a href="#">Programming Sites</a>
+                    <ul class="dropdown-content">
+                        <li><a href="https://www.programming1.com">Programming Site 1</a></li>
+                        <li><a href="https://www.programming2.com">Programming Site 2</a></li>
+                    </ul>
                 </li>
             </ul>
         </nav>
     </header>
+
     <!-- Main content of the page -->
-    <div class="container">
-        <h1>Exponential Growth Calculator</h1>
-        <p>This calculator solves and plots the exponential growth equation: <strong>y = a * e^(b * x)</strong>.</p>
-        
-        <!-- Form for the calculator -->
-        <form id="calculatorForm" aria-labelledby="calculatorForm">
-            <label for="a">Enter value for <strong>a</strong> (e.g., 1):</label>
-            <input type="number" id="a" name="a" value="1" aria-required="true" required>
+    <main>
+        <div class="container">
+            <h1>Exponential Growth Calculator</h1>
+            <p>This calculator solves and plots the exponential growth equation: <strong>y = a * e^(b * x)</strong>.</p>
 
-            <label for="b">Enter value for <strong>b</strong> (e.g., 0.5):</label>
-            <input type="number" id="b" name="b" value="0.5" aria-required="true" required>
+            <!-- Form for the calculator -->
+            <form id="calculatorForm" aria-labelledby="calculatorForm">
+                <label for="a">Enter value for <strong>a</strong> (e.g., 1):</label>
+                <input type="number" id="a" name="a" value="1" aria-required="true" required>
 
-            <label for="xStart">Enter starting value for <strong>x</strong> (e.g., 0):</label>
-            <input type="number" id="xStart" name="xStart" value="0" aria-required="true" required>
+                <label for="b">Enter value for <strong>b</strong> (e.g., 0.5):</label>
+                <input type="number" id="b" name="b" value="0.5" aria-required="true" required>
 
-            <label for="xEnd">Enter ending value for <strong>x</strong> (e.g., 10):</label>
-            <input type="number" id="xEnd" name="xEnd" value="10" aria-required="true" required>
+                <label for="xStart">Enter starting value for <strong>x</strong> (e.g., 0):</label>
+                <input type="number" id="xStart" name="xStart" value="0" aria-required="true" required>
 
-            <label for="xStep">Enter step size for <strong>x</strong> (e.g., 1):</label>
-            <input type="number" id="xStep" name="xStep" value="1" aria-required="true" required>
+                <label for="xEnd">Enter ending value for <strong>x</strong> (e.g., 10):</label>
+                <input type="number" id="xEnd" name="xEnd" value="10" aria-required="true" required>
 
-            <input type="button" value="Calculate and Plot" onclick="calculateAndPlot()">
-        </form>
+                <label for="xStep">Enter step size for <strong>x</strong> (e.g., 1):</label>
+                <input type="number" id="xStep" name="xStep" value="1" aria-required="true" required>
 
-        <!-- Placeholder for the chart -->
-        <div class="chart-container">
-            <canvas id="myChart" width="400" height="200" aria-label="Chart plotting the calculated exponential growth values"></canvas>
+                <div class="center">
+                    <button type="button" onclick="calculateAndPlot()">Calculate and Plot</button>
+                </div>
+            </form>
+
+            <!-- Placeholder for the chart -->
+            <div class="chart-container">
+                <canvas id="myChart" aria-label="Chart plotting the calculated exponential growth values"></canvas>
+            </div>
         </div>
-    </div>
+    </main>
+
+    <!-- Footer section -->
+    <footer>
+        <p>Created By Ryan Garcia-Hernandez</p>
+    </footer>
 
     <!-- JavaScript code to perform the calculations and generate the plot -->
     <script>
-       function calculateAndPlot() {
-        // Get user inputs
-        let a = parseFloat(document.getElementById('a').value);
-        let b = parseFloat(document.getElementById('b').value);
-        let xStart = parseFloat(document.getElementById('xStart').value);
-        let xEnd = parseFloat(document.getElementById('xEnd').value);
-        let xStep = parseFloat(document.getElementById('xStep').value);
+        function calculateAndPlot() {
+            // Get user inputs
+            let a = parseFloat(document.getElementById('a').value);
+            let b = parseFloat(document.getElementById('b').value);
+            let xStart = parseFloat(document.getElementById('xStart').value);
+            let xEnd = parseFloat(document.getElementById('xEnd').value);
+            let xStep = parseFloat(document.getElementById('xStep').value);
 
-        // Initialize arrays for the x and y values
-        let xValues = [];
-        let yValues = [];
+            // Initialize arrays for the x and y values
+            let xValues = [];
+            let yValues = [];
 
-        // Calculate y = a * e^(b * x) for each x in the range
-        for (let x = xStart; x <= xEnd; x += xStep) {
-            let y = a * Math.exp(b * x);
-            xValues.push(x);
-            yValues.push(y);
-        }
+            // Calculate y = a * e^(b * x) for each x in the range
+            for (let x = xStart; x <= xEnd; x += xStep) {
+                let y = a * Math.exp(b * x);
+                xValues.push(x);
+                yValues.push(y);
+            }
 
-        // Get the context of the canvas for Chart.js
-        let ctx = document.getElementById('myChart').getContext('2d');
+            // Get the context of the canvas for Chart.js
+            let ctx = document.getElementById('myChart').getContext('2d');
 
-        // Check if a previous chart exists, if so destroy it
-        if (window.myChart instanceof Chart) {
-            window.myChart.destroy();
-        }
+            // Check if a previous chart exists, if so destroy it
+            if (window.myChart instanceof Chart) {
+                window.myChart.destroy();
+            }
 
-        // Create a new line chart
-        window.myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: xValues,
-                datasets: [{
-                    label: `y = ${a} * e^(${b} * x)`,
-                    data: yValues,
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    fill: true,
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    x: {
-                        title: {
-                            display: true,
-                            text: 'X'
-                        }
-                    },
-                    y: {
-                        title: {
-                            display: true,
-                            text: 'Y'
-                        }
-                    }
+            // Create a new line chart
+            window.myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        label: `y = ${a} * e^(${b} * x)`,
+                        data: yValues,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        fill: true,
+                    }]
                 },
-                plugins: {
-                    title: {
-                        display: true,
-                        text: 'Exponential Growth Plot'
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'X'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Y'
+                            }
+                        }
                     },
-                    tooltip: {
-                        enabled: true,
-                        callbacks: {
-                            label: function(tooltipItem) {
-                                return `y: ${tooltipItem.raw}`;
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Exponential Growth Plot'
+                        },
+                        tooltip: {
+                            enabled: true,
+                            callbacks: {
+                                label: function(tooltipItem) {
+                                    return `y: ${tooltipItem.raw}`;
+                                }
                             }
                         }
                     }
                 }
-            }
-        });
-    }
-
+            });
+        }
     </script>
 </body>
 </html>

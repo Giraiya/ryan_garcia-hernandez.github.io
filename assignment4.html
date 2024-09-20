@@ -11,13 +11,9 @@
     
     <title>Exponential Assignment 4 - Growth Calculator</title>
     <link rel="stylesheet" href="styles.css"> 
-   <!-- <link rel="stylesheet" href="asgn4Calc.css"> -->
-
-    <!-- For Accessibility (ADA compliance) -->
-    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net/npm/chart.js; style-src 'self';"> -->
 
     <!-- Include Chart.js from CDN -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -25,45 +21,7 @@
         <h1>Assignment 4 - Growth Calculator</h1>
         <nav>
             <ul class="nav-links">
-                 <li><a href="Index.html">Home</a>
-                </li>
-                <li><a href="#">My Classes</a>
-                    <div class="dropdown-content">
-                        <a href="class1.html">Class 1</a>
-                        <a href="class2.html">Class 2</a>
-                    </div>
-                </li>
-                <li><a href="#">My Assignments</a>
-                    <div class="dropdown-content">
-                        <a href="assignment1.html">Assignment 1</a>
-                        <a href="assignment2.html">Assignment 2</a>
-                        <a href="assignment3.html">Assignment 3</a>
-                        <a href="assignment4.html">Assignment 4</a>
-                        <a href="assignment5.html">Assignment 5</a>
-                        <a href="assignment6.html">Assignment 6</a>
-                        <a href="assignment7.html">Assignment 7</a>
-                        <a href="assignment8.html">Assignment 8</a>
-                        <a href="assignment9.html">Assignment 9</a>
-                        <a href="assignment10.html">Assignment 10</a>
-                        <a href="assignment11.html">Assignment 11</a>
-                        <a href="assignment12.html">Assignment 12</a>
-                        <a href="assignment13.html">Assignment 13</a>
-                        <a href="assignment14.html">Assignment 14</a>
-                        <a href="assignment15.html">Assignment 15</a>
-                    </div>
-                </li>
-                <li><a href="#">My Favorite Sites</a>
-                    <div class="dropdown-content">
-                        <a href="https://www.example1.com">Favorite Site 1</a>
-                        <a href="https://www.example2.com">Favorite Site 2</a>
-                    </div>
-                </li>
-                <li><a href="#">Programming Sites</a>
-                    <div class="dropdown-content">
-                        <a href="https://www.programming1.com">Programming Site 1</a>
-                        <a href="https://www.programming2.com">Programming Site 2</a>
-                    </div>
-                </li>
+                <!-- Navigation Bar -->
             </ul>
         </nav>
     </header>
@@ -75,7 +33,7 @@
             <p>This calculator solves and plots the exponential growth equation: <strong>y = a * e^(b * x)</strong>.</p>
 
             <!-- Form for the calculator -->
-            <form id="calculatorForm" aria-labelledby="calculatorForm">
+            <form id="plot-form" aria-labelledby="calculatorForm">
                 <label for="a">Enter value for <strong>a</strong> (e.g., 1):</label>
                 <input type="number" id="a" name="a" value="1" aria-required="true" required>
 
@@ -100,118 +58,83 @@
             <div class="chart-container">
                 <canvas id="myChart" aria-label="Chart plotting the calculated exponential growth values"></canvas>
             </div>
+
+            <!-- Placeholder for displaying calculated values -->
+            <div id="calculatedV"></div>
         </div>
     </main>
 
-    
-
     <!-- JavaScript code to perform the calculations and generate the plot -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    document.getElementById('plot-form').addEventListener('submit', function(event) {
-        event.preventDefault();
+    <script>
+        function calculateAndPlot() {
+            let a = parseFloat(document.getElementById('a').value);
+            let b = parseFloat(document.getElementById('b').value);
+            let xStart = parseFloat(document.getElementById('xStart').value);
+            let xEnd = parseFloat(document.getElementById('xEnd').value);
+            let xStep = parseFloat(document.getElementById('xStep').value);
 
-        let a = parseFloat(document.getElementById('a').value);
-        let b = parseFloat(document.getElementById('b').value);
-        let c = parseFloat(document.getElementById('c').value);
-        let xMin = parseFloat(document.getElementById('xMin').value);
-        let xMax = parseFloat(document.getElementById('xMax').value);
-    
-        let xValues = [];
-        let yValues = [];
-        for (let x = xMin; x <= xMax; x += 0.1) {
-            xValues.push(x.toFixed(1));
-            let y = calculateY(a, b, x, c);
-            yValues.push(y);
+            let xValues = [];
+            let yValues = [];
+
+            for (let x = xStart; x <= xEnd; x += xStep) {
+                xValues.push(x.toFixed(2));
+                let y = a * Math.exp(b * x); // Exponential Growth Formula
+                yValues.push(y.toFixed(2));
+            }
+
+            plotGraph(xValues, yValues);
+
+            let output = "<h3>X and Y values:</h3><ul>";
+            for (let i = 0; i < xValues.length; i++) {
+                output += `<li>x = ${xValues[i]}, y = ${yValues[i]}</li>`;
+            }
+            output += "</ul>";
+            document.getElementById('calculatedV').innerHTML = output;
         }
 
-        plotGraph(xValues, yValues);
-    });
+        function plotGraph(xValues, yValues) {
+            const ctx = document.getElementById('myChart').getContext('2d');
+            if (window.myChart) {
+                window.myChart.destroy();
+            }
 
-    function calculateY(a, b, x, c) {
-        return a * Math.cos(b * x) + c * x;
-    }
-
-    let chart;
-    function plotGraph(xValues, yValues) {
-        const ctx = document.getElementById('graphCanvas').getContext('2d');
-        if (chart) {
-            chart.destroy();
-        }
-        chart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: xValues,
-                datasets: [{
-                    label: 'y = a*cos(bx)+cx',
-                    data: yValues,
-                    borderColor: '#5DAAE1',
-                    borderWidth: 2,
-                    fill: false
-                }]
-            },
-            options: {
-                scales: {
-                    x: {
-                        title: {
-                            display: true,
-                            text: 'X Axis'
-                        }
-                    },
-                    y: {
-                        title: {
-                            display: true,
-                            text: 'Y Axis'
+            window.myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        label: 'Exponential Growth y = a * e^(b * x)',
+                        data: yValues,
+                        borderColor: '#FF5733',
+                        borderWidth: 2,
+                        fill: false
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'X Axis'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Y Axis'
+                            }
                         }
                     }
                 }
-            }
-        });
-    }
-	
-    document.getElementById('calculateButton').addEventListener('click', function() {
-        let a = parseFloat(document.getElementById('a').value);
-        let b = parseFloat(document.getElementById('b').value);
-        let c = parseFloat(document.getElementById('c').value);
-        let xMin = parseFloat(document.getElementById('xMin').value);
-        let xMax = parseFloat(document.getElementById('xMax').value);
-    
-        let xValues = [];
-        let yValues = [];
-        let output = "<h3>X and Y values:</h3><ul>";
-        for (let x = xMin; x <= xMax; x += 0.1) {
-            let roundedX = x.toFixed(1);
-            xValues.push(roundedX);
-            let y = calculateY(a, b, x, c);
-            yValues.push(y);
-            output += `<h3>x= ${roundedX}, y= ${y.toFixed(2)}</h3>`;
+            });
         }
-        output += "</ul>";
-
-        document.getElementById('calculatedV').innerHTML = output;
-    });
-</script>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        document.querySelectorAll('nav ul li').forEach(function(menuItem) {
-            menuItem.addEventListener('mouseover', function() {
-                const dropdown = this.querySelector('.dropdown');
-                if (dropdown) {
-                    dropdown.classList.add('open-menu');
-                }
-            });
-
-            menuItem.addEventListener('mouseout', function() {
-                const dropdown = this.querySelector('.dropdown');
-                if (dropdown) {
-                    dropdown.classList.remove('open-menu');
-                }
-            });
-        });
     </script>
-</body>
-</html>
-<!-- Footer section -->
+
+    <!-- Footer section -->
     <footer>
-        <p>&copy; Created By Ryan Garcia-Hernandez</p>
+        <p>&copy; 2024 Created By Ryan Garcia-Hernandez</p>
     </footer>
+</body>
+
+</html>
+

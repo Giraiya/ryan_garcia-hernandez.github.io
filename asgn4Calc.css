@@ -189,7 +189,7 @@ nav li:hover > a {
 .dropdown {
     display: none;
     position: absolute;
-    background-color: #b8488d;
+    background-color: #333;
     min-width: 160px;
     z-index: 1;
 }

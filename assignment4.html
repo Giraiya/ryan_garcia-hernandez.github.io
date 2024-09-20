@@ -13,8 +13,9 @@
     <link rel="stylesheet" href="asgn4Calc.css">  
 
 	<script>
-	function cubicEquation(a, b, c, d, x) {
-    return a * Math.pow(x, 3) + b * Math.pow(x, 2) + c * x + d;
+// Logarithmic equation: y = a * ln(b * x + c) + d
+function logarithmicEquation(a, b, c, d, x) {
+    return a * Math.log(b * x + c) + d; // Math.log computes the natural logarithm (ln)
 }
 
 function calculateAndPlot() {
@@ -30,7 +31,7 @@ function calculateAndPlot() {
 
     for (let x = xMin; x <= xMax; x += 0.1) {
         xV.push(x);
-        yV.push(cubicEquation(a, b, c, d, x));
+        yV.push(logarithmicEquation(a, b, c, d, x));
     }
 
     plotGraph(xV, yV);
@@ -43,7 +44,7 @@ function plotGraph(xV, yV) {
         data: {
             labels: xV,
             datasets: [{
-                label: 'y = ax^3 + bx^2 + cx + d',
+                label: 'y = a * ln(b * x + c) + d', // Updated label to match the new equation
                 data: yV,
                 borderColor: 'rgba(217, 31, 137)',
                 borderWidth: 1,
@@ -70,8 +71,7 @@ function plotGraph(xV, yV) {
         }
     });
 }
-
-	</script>
+</script>
 </head>
 <body>
 <header>
@@ -141,14 +141,13 @@ function plotGraph(xV, yV) {
     <label for="b">B:</label>
     <input type="number" id="b" value="0.5" required>
     <label for="c">C:</label>
-    <input type="number" id="c" value="0" required>
+    <input type="number" id="c" value="1" required>
     <label for="d">D:</label>
-    <input type="number" id="d" value="2" required>
+    <input type="number" id="d" value="0" required>
     <label for="xMin">X Min:</label>
-    <input type="number" id="xMin" value="0" required>
+    <input type="number" id="xMin" value="1" required> <!-- Use Xmin > 0 for logarithmic functions -->
     <label for="xMax">X Max:</label>
     <input type="number" id="xMax" value="10" required>
-	<br>
 	
  </form>
 <article>  

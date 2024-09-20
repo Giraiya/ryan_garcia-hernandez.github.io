@@ -1,3 +1,221 @@
+/* General Body Styling */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+/* Form Styling */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    height: 500px; /* Expand the height to allow more content before scrolling */
+    overflow-y: auto; /* Enables vertical scrolling */
+}
+
+
+form h2 {
+    /**/text-align: left;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"], 
+input[type="email"], 
+input[type="tel"], 
+input[type="date"], 
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+textarea {
+    resize: vertical;
+    height: 75px;
+}
+
+/* Button styling */
+input[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block; /* Make the button a block element */
+    margin: 0 auto; /* Center the button horizontally */
+}
+
+input[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+/* Style for the select element */
+.state {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.state label {
+    font-family: Arial, sans-serif;
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.state select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    background-color: #f5f5f5;
+    cursor: pointer;
+    -webkit-appearance: none; /* Remove default styling for WebKit browsers */
+    -moz-appearance: none; /* Remove default styling for Firefox */
+    appearance: none; /* Remove default styling for other browsers */
+}
+
+.confpage {
+    display: none; /* Initially hidden, will be displayed after form validation */
+    background-color: #f4f4f4; /* Light gray background to differentiate the section */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+}
+
+.confpage h1 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.confpage p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+}
+
+.confpage strong {
+    color: #333; /* Make the labels (e.g. Name, Address) bold and a bit darker */
+}
+
+.formButtons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.formButtons input[type="button"] {
+    background-color: #4CAF50; /* Green background for the buttons */
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.formButtons input[type="button"]:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+}
+
+@media screen and (max-width: 768px) {
+    .confpage {
+        padding: 15px;
+        margin: 10px auto;
+    }
+
+    .confpage p {
+        font-size: 14px;
+    }
+
+    .formButtons input[type="button"] {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+
+/* Optional: add a custom arrow to the select element */
+/*.state select::-ms-expand {
+    display: none; /* Remove default arrow for Internet Explorer */
+/*} 
+
+/* Style for the select element when focused */
+.state select:focus {
+    border-color: #1E2D37;
+    outline: none;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Style for disabled state option */
+.state option[disabled] {
+    color: #999;
+}
+
+
+/* Form Validation Error Styling */
+.error {
+    color: red;
+    font-size: 0.9em;
+    display: none;
+}
+
+input.invalid {
+    border-color: red;
+}
+
+
+
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .nav-links a {
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-links {
+        flex-direction: column;
+    }
+
+    .nav-links li {
+        margin: 5px 0;
+    }
+
+    .nav-links a {
+        padding: 12px 20px;
+        text-align: center;
+    }
+}
 body {
     font-family: Arial, sans-serif;
     margin: 0;

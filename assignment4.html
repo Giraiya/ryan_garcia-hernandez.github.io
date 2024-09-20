@@ -17,7 +17,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net/npm/chart.js; style-src 'self';">
 
     <!-- Include Chart.js from CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
 </head>
 
 <body>
@@ -103,86 +103,115 @@
         </div>
     </main>
 
-    <!-- Footer section -->
-    <footer>
-        <p>&copy; Created By Ryan Garcia-Hernandez</p>
-    </footer>
+    
 
     <!-- JavaScript code to perform the calculations and generate the plot -->
-    <script>
-        function calculateAndPlot() {
-            // Get user inputs
-            let a = parseFloat(document.getElementById('a').value);
-            let b = parseFloat(document.getElementById('b').value);
-            let xStart = parseFloat(document.getElementById('xStart').value);
-            let xEnd = parseFloat(document.getElementById('xEnd').value);
-            let xStep = parseFloat(document.getElementById('xStep').value);
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.getElementById('plot-form').addEventListener('submit', function(event) {
+        event.preventDefault();
 
-            // Initialize arrays for the x and y values
-            let xValues = [];
-            let yValues = [];
+        let a = parseFloat(document.getElementById('a').value);
+        let b = parseFloat(document.getElementById('b').value);
+        let c = parseFloat(document.getElementById('c').value);
+        let xMin = parseFloat(document.getElementById('xMin').value);
+        let xMax = parseFloat(document.getElementById('xMax').value);
+    
+        let xValues = [];
+        let yValues = [];
+        for (let x = xMin; x <= xMax; x += 0.1) {
+            xValues.push(x.toFixed(1));
+            let y = calculateY(a, b, x, c);
+            yValues.push(y);
+        }
 
-            // Calculate y = a * e^(b * x) for each x in the range
-            for (let x = xStart; x <= xEnd; x += xStep) {
-                let y = a * Math.exp(b * x);
-                xValues.push(x);
-                yValues.push(y);
-            }
+        plotGraph(xValues, yValues);
+    });
 
-            // Get the context of the canvas for Chart.js
-            let ctx = document.getElementById('myChart').getContext('2d');
+    function calculateY(a, b, x, c) {
+        return a * Math.cos(b * x) + c * x;
+    }
 
-            // Check if a previous chart exists, if so destroy it
-            if (window.myChart instanceof Chart) {
-                window.myChart.destroy();
-            }
-
-            // Create a new line chart
-            window.myChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: xValues,
-                    datasets: [{
-                        label: `y = ${a} * e^(${b} * x)`,
-                        data: yValues,
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        fill: true,
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'X'
-                            }
-                        },
-                        y: {
-                            title: {
-                                display: true,
-                                text: 'Y'
-                            }
-                        }
-                    },
-                    plugins: {
+    let chart;
+    function plotGraph(xValues, yValues) {
+        const ctx = document.getElementById('graphCanvas').getContext('2d');
+        if (chart) {
+            chart.destroy();
+        }
+        chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: xValues,
+                datasets: [{
+                    label: 'y = a*cos(bx)+cx',
+                    data: yValues,
+                    borderColor: '#5DAAE1',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
                         title: {
                             display: true,
-                            text: 'Exponential Growth Plot'
-                        },
-                        tooltip: {
-                            enabled: true,
-                            callbacks: {
-                                label: function(tooltipItem) {
-                                    return `y: ${tooltipItem.raw}`;
-                                }
-                            }
+                            text: 'X Axis'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Y Axis'
                         }
                     }
                 }
-            });
+            }
+        });
+    }
+	
+    document.getElementById('calculateButton').addEventListener('click', function() {
+        let a = parseFloat(document.getElementById('a').value);
+        let b = parseFloat(document.getElementById('b').value);
+        let c = parseFloat(document.getElementById('c').value);
+        let xMin = parseFloat(document.getElementById('xMin').value);
+        let xMax = parseFloat(document.getElementById('xMax').value);
+    
+        let xValues = [];
+        let yValues = [];
+        let output = "<h3>X and Y values:</h3><ul>";
+        for (let x = xMin; x <= xMax; x += 0.1) {
+            let roundedX = x.toFixed(1);
+            xValues.push(roundedX);
+            let y = calculateY(a, b, x, c);
+            yValues.push(y);
+            output += `<h3>x= ${roundedX}, y= ${y.toFixed(2)}</h3>`;
         }
+        output += "</ul>";
+
+        document.getElementById('calculatedV').innerHTML = output;
+    });
+</script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.querySelectorAll('nav ul li').forEach(function(menuItem) {
+            menuItem.addEventListener('mouseover', function() {
+                const dropdown = this.querySelector('.dropdown');
+                if (dropdown) {
+                    dropdown.classList.add('open-menu');
+                }
+            });
+
+            menuItem.addEventListener('mouseout', function() {
+                const dropdown = this.querySelector('.dropdown');
+                if (dropdown) {
+                    dropdown.classList.remove('open-menu');
+                }
+            });
+        });
     </script>
 </body>
 </html>
+<!-- Footer section -->
+    <footer>
+        <p>&copy; Created By Ryan Garcia-Hernandez</p>
+    </footer>

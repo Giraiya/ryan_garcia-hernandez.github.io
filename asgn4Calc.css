@@ -22,7 +22,7 @@ form {
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-    height: 250px; /* Expand the height to allow more content before scrolling */
+    height: 270px; /* Expand the height to allow more content before scrolling */
     overflow-y: auto; /* Enables vertical scrolling */
 }
 

@@ -22,7 +22,7 @@ form {
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-    height: 200px; /* Expand the height to allow more content before scrolling */
+    height: 250px; /* Expand the height to allow more content before scrolling */
     overflow-y: auto; /* Enables vertical scrolling */
 }
 
@@ -230,14 +230,14 @@ form {
     max-width: 500px;
     /*text-align: center;*/
     overflow-y: auto;
-   /* display: grid; */
+    display: grid; 
    /* grid-template-columns: 1fr 2fr; */ /* Create two columns: 1 for label, 1 for input */
    /* grid-gap: 10px; */ /* Space between label and input fields */
     margin: 0 auto;
 }
 
 label {
-    /*display: block;*/
+    display: block;
     /* text-align:  */
     /*margin-bottom: 8px;*/
     display: flex;
@@ -280,6 +280,6 @@ footer {
     padding: 10px;
     position: fixed;
     width: 100%;
-    bottom: 0;
-    text-align: center;/*EDITED ADDED*/
+   /* bottom: 0; */
+   /* text-align: center; */ /*EDITED ADDED*/
 }

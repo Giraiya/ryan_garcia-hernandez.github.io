@@ -279,7 +279,7 @@ textarea {
     justify-content: center; /* Centers the content horizontally */
     align-items: center;     /* Centers the content vertically (optional) */
     margin: 0 auto;          /* Automatically adjust the margin to center */
-    height: 100%;            /* Optional, if you want to control the container height */
+    height: auto;            /* Optional, if you want to control the container height */
     width: 100%;             /* Full width of the parent */
 }
 

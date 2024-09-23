@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Spirograph drawing using HTML5 canvas and JavaScript">
+    <meta name="keywords" content="COP4813, HTML5, JavaScript, canvas, Spirograph">
+    <meta name="author" content="Ryan Garcia-Hernandez">
+    <title>Assignment 5 - Spirograph</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            border: 1px solid black;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Spirograph Drawing</h1>
+    
+    <label for="R">Outer Radius (R): </label>
+    <input type="number" id="R" value="100" min="1" required>
+    
+    <label for="r">Inner Radius (r): </label>
+    <input type="number" id="r" value="50" min="1" required>
+    
+    <label for="O">Offset (O): </label>
+    <input type="number" id="O" value="10" min="0" required>
+    
+    <button onclick="startSpirograph()">Start Drawing</button>
+    
+    <canvas id="spiroCanvas" width="500" height="500"></canvas>
+
+    <script>
+        let ctx;
+        let t = 0;
+
+        function startSpirograph() {
+            const canvas = document.getElementById('spiroCanvas');
+            ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            const R = parseFloat(document.getElementById('R').value);
+            const r = parseFloat(document.getElementById('r').value);
+            const O = parseFloat(document.getElementById('O').value);
+
+            t = 0;
+            drawSpirograph(R, r, O);
+        }
+
+        function drawSpirograph(R, r, O) {
+            let x, y;
+            ctx.beginPath();
+            const interval = setInterval(() => {
+                t += 0.05;  // adjust step size for finer or coarser drawing
+                const theta = (R + r) * t;
+                
+                // Spirograph equations
+                x = (R + r) * Math.cos(t) - (r + O) * Math.cos(((R + r) / r) * t);
+                y = (R + r) * Math.sin(t) - (r + O) * Math.sin(((R + r) / r) * t);
+
+                ctx.lineTo(250 + x, 250 + y);  // center at (250, 250)
+                ctx.stroke();
+
+                if (t > 100 * Math.PI) {  // stop after enough iterations
+                    clearInterval(interval);
+                }
+            }, 10);  // adjust interval speed for faster or slower drawing
+        }
+    </script>
+</body>
+</html>

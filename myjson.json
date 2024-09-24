@@ -1,0 +1,17 @@
+{
+  "season": "2024",
+  "players": [
+    {
+      "playerName": "John Doe",
+      "team": "Eagles",
+      "gamesPlayed": 12,
+      "pointsScored": 340
+    },
+    {
+      "playerName": "Jane Smith",
+      "team": "Sharks",
+      "gamesPlayed": 10,
+      "pointsScored": 280
+    }
+  ]
+}

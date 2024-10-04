@@ -9,21 +9,29 @@
     <link rel="stylesheet" href="styles.css">
     <title>Assignment 6 - JSON Data</title>
     <style>
-        body {
+       body {
             font-family: Arial, sans-serif;
             text-align: center;
             margin-top: 50px;
         }
+
         table {
-            width: 50%;
+            width: 80%;
             margin: 0 auto;
             border-collapse: collapse;
         }
+
         table, th, td {
             border: 1px solid black;
         }
+
         th, td {
             padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
         }
     </style>
 </head>
@@ -74,39 +82,50 @@
         </nav>
     </header>
 
-    <h1>Assignment 6 - JSON: Player Scores</h1>
+    <h1>Assignment 6 - JSON: Student Information Table</h1>
+
     <table id="jsonTable">
         <thead>
             <tr>
-                <th>Player Name</th>
-                <th>Team</th>
-                <th>Games Played</th>
-                <th>Points Scored</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Major</th>
+                <th>GPA</th>
+                <th>Graduation Year</th>
             </tr>
         </thead>
         <tbody>
-            <!-- Data will be injected here by JavaScript -->
+            <!-- Data will be populated here dynamically -->
         </tbody>
     </table>
 
     <script>
+        // Fetch JSON data and display it in a table
         fetch('myjson.json')
         .then(response => response.json())
         .then(data => {
-            const tableBody = document.querySelector('#jsonTable tbody');
-            data.players.forEach(player => {
-                const row = document.createElement('tr');
+            const students = data.students;
+            const tableBody = document.querySelector("#jsonTable tbody");
+            
+            // Clear the table body before adding new rows
+            tableBody.innerHTML = '';
+
+            // Iterate over the student data and populate the table
+            students.forEach(student => {
+                const row = document.createElement("tr");
                 row.innerHTML = `
-                    <td>${player.playerName}</td>
-                    <td>${player.team}</td>
-                    <td>${player.gamesPlayed}</td>
-                    <td>${player.pointsScored}</td>
+                    <td>${student.id}</td>
+                    <td>${student.name}</td>
+                    <td>${student.major}</td>
+                    <td>${student.gpa}</td>
+                    <td>${student.graduationYear}</td>
                 `;
                 tableBody.appendChild(row);
             });
         })
-        .catch(error => console.error('Error loading JSON:', error));
+        .catch(error => console.error('Error fetching the JSON data:', error));
     </script>
+
 </body>
 </html>
  <footer>

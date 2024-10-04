@@ -1,17 +1,32 @@
 {
-  "season": "2024",
-  "players": [
+  "students": [
     {
-      "playerName": "John Doe",
-      "team": "Eagles",
-      "gamesPlayed": 12,
-      "pointsScored": 340
+      "id": 1,
+      "name": "Alice Johnson",
+      "major": "Computer Science",
+      "gpa": 3.8,
+      "graduationYear": 2025
     },
     {
-      "playerName": "Jane Smith",
-      "team": "Sharks",
-      "gamesPlayed": 10,
-      "pointsScored": 280
+      "id": 2,
+      "name": "Bob Smith",
+      "major": "Mechanical Engineering",
+      "gpa": 3.5,
+      "graduationYear": 2024
+    },
+    {
+      "id": 3,
+      "name": "Charlie Williams",
+      "major": "Business Administration",
+      "gpa": 3.9,
+      "graduationYear": 2023
+    },
+    {
+      "id": 4,
+      "name": "Diana Brown",
+      "major": "Psychology",
+      "gpa": 3.7,
+      "graduationYear": 2024
     }
   ]
 }

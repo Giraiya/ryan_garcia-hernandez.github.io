@@ -8,6 +8,7 @@
     <meta name="author" content="Ryan Garcia-Hernandez">
     <link rel="stylesheet" href="styles.css">
     <title>Assignment 7 - Drag and Drop</title>
+</head>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,30 +18,35 @@
         .deck-area {
             margin-top: 20px;
         }
-        .cards {
-            display: inline-block;
-            margin: 10px;
-            border: 1px solid black;
-            padding: 10px;
-            width: 120px;
-            height: 170px;
-        }
-        #dealBtn {
-            margin-top: 20px;
-        }
-        .discard-pile {
-            width: 140px;
-            height: 190px;
-            border: 2px dashed red;
-            display: inline-block;
-            margin-top: 20px;
-            vertical-align: top;
-        }
-        img {
-            width: 100%;
-            height: 100%;
-            cursor: move;
-        }
+      /* Adjust the size and layout of the card images */
+.card {
+    width: 100px;  /* Set a fixed width for each card */
+    height: 140px; /* Set a fixed height for each card */
+    margin: 10px;  /* Space between the cards */
+    object-fit: cover; /* Ensure the image fits within the card */
+}
+
+.card-container {
+    display: flex;            /* Use flexbox for layout */
+    flex-wrap: wrap;          /* Allow the cards to wrap into rows */
+    justify-content: center;  /* Center the cards in the container */
+    max-width: 90%;           /* Limit the container width */
+    margin: auto;             /* Center the container */
+    padding: 20px;            /* Add padding for spacing */
+    background-color: #f0f0f0; /* Optional: Add a background color */
+}
+
+.card-placeholder {
+    width: 100px;
+    height: 140px;
+    margin: 10px;
+    background-color: lightgray;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
     </style>
 </head>
 <header>
@@ -95,157 +101,128 @@
 
     <div class="deck-area" id="deckArea">
     <div id="deck">
-        <!-- Clubs -->
-        <img src="cards drag drop assgn7/English_pattern_ace_of_clubs.svg.png" class="card" draggable="true" id="card-1" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_2_of_clubs.svg.png" class="card" draggable="true" id="card-2" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_3_of_clubs.svg.png" class="card" draggable="true" id="card-3" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_4_of_clubs.svg.png" class="card" draggable="true" id="card-4" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_5_of_clubs.svg.png" class="card" draggable="true" id="card-5" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_6_of_clubs.svg.png" class="card" draggable="true" id="card-6" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_7_of_clubs.svg.png" class="card" draggable="true" id="card-7" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_8_of_clubs.svg.png" class="card" draggable="true" id="card-8" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_9_of_clubs.svg.png" class="card" draggable="true" id="card-9" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_10_of_clubs.svg.png" class="card" draggable="true" id="card-10" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_jack_of_clubs.svg.png" class="card" draggable="true" id="card-11" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_queen_of_clubs.svg.png" class="card" draggable="true" id="card-12" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_king_of_clubs.svg.png" class="card" draggable="true" id="card-13" ondragstart="drag(event)">
-
-        <!-- Diamonds -->
-        <img src="cards drag drop assgn7/English_pattern_ace_of_diamonds.svg.png" class="card" draggable="true" id="card-14" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_2_of_diamonds.svg.png" class="card" draggable="true" id="card-15" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_3_of_diamonds.svg.png" class="card" draggable="true" id="card-16" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_4_of_diamonds.svg.png" class="card" draggable="true" id="card-17" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_5_of_diamonds.svg.png" class="card" draggable="true" id="card-18" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_6_of_diamonds.svg.png" class="card" draggable="true" id="card-19" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_7_of_diamonds.svg.png" class="card" draggable="true" id="card-20" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_8_of_diamonds.svg.png" class="card" draggable="true" id="card-21" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_9_of_diamonds.svg.png" class="card" draggable="true" id="card-22" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_10_of_diamonds.svg.png" class="card" draggable="true" id="card-23" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_jack_of_diamonds.svg.png" class="card" draggable="true" id="card-24" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_queen_of_diamonds.svg.png" class="card" draggable="true" id="card-25" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_king_of_diamonds.svg.png" class="card" draggable="true" id="card-26" ondragstart="drag(event)">
-
-        <!-- Hearts -->
-        <img src="cards drag drop assgn7/English_pattern_ace_of_hearts.svg.png" class="card" draggable="true" id="card-27" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_2_of_hearts.svg.png" class="card" draggable="true" id="card-28" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_3_of_hearts.svg.png" class="card" draggable="true" id="card-29" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_4_of_hearts.svg.png" class="card" draggable="true" id="card-30" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_5_of_hearts.svg.png" class="card" draggable="true" id="card-31" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_6_of_hearts.svg.png" class="card" draggable="true" id="card-32" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_7_of_hearts.svg.png" class="card" draggable="true" id="card-33" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_8_of_hearts.svg.png" class="card" draggable="true" id="card-34" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_9_of_hearts.svg.png" class="card" draggable="true" id="card-35" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_10_of_hearts.svg.png" class="card" draggable="true" id="card-36" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_jack_of_hearts.svg.png" class="card" draggable="true" id="card-37" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_queen_of_hearts.svg.png" class="card" draggable="true" id="card-38" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_king_of_hearts.svg.png" class="card" draggable="true" id="card-39" ondragstart="drag(event)">
-
-        <!-- Spades -->
-        <img src="cards drag drop assgn7/English_pattern_ace_of_spades.svg.png" class="card" draggable="true" id="card-40" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_2_of_spades.svg.png" class="card" draggable="true" id="card-41" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_3_of_spades.svg.png" class="card" draggable="true" id="card-42" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_4_of_spades.svg.png" class="card" draggable="true" id="card-43" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_5_of_spades.svg.png" class="card" draggable="true" id="card-44" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_6_of_spades.svg.png" class="card" draggable="true" id="card-45" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_7_of_spades.svg.png" class="card" draggable="true" id="card-46" ondragstart="drag(event)">
-        <img src="cards drag drop assgn7/English_pattern_8_of_spades.svg.png" class="card" draggable="true" id="card-47" ondragstart="drag(event)">
-
-        <!-- Dealt cards will be displayed here -->
+        <!-- Card container where cards will be displayed -->
+    <div class="card-container" id="card-container">
+        <!-- Placeholder for cards before dealing -->
+        <div class="card-placeholder">Card 1</div>
+        <div class="card-placeholder">Card 2</div>
+        <div class="card-placeholder">Card 3</div>
+        <!-- You can add more placeholders as needed -->
     </div>
 
-    <div class="discard-pile" id="discardPile">
-        <p>Discard Pile</p>
-    </div>
+    <!-- Deal Cards button -->
+    <button id="deal-button" onclick="dealCards()">Deal Cards</button>
+
+    <script src="script.js"></script> <!-- Link to JavaScript file -->
+</body>
+</html>
 
     <script>
-        const deck = [
-    // Clubs
-    'English_pattern_ace_of_clubs.svg.png', 'English_pattern_2_of_clubs.svg.png', 'English_pattern_3_of_clubs.svg.png', 'English_pattern_4_of_clubs.svg.png', 
-    'English_pattern_5_of_clubs.svg.png', 'English_pattern_6_of_clubs.svg.png', 'English_pattern_7_of_clubs.svg.png', 'English_pattern_8_of_clubs.svg.png', 
-    'English_pattern_9_of_clubs.svg.png', 'English_pattern_10_of_clubs.svg.png', 'English_pattern_jack_of_clubs.svg.png', 'English_pattern_queen_of_clubs.svg.png', 
-    'English_pattern_king_of_clubs.svg.png',
+        let dealtCards = [];
+		let discardedCards = [];
+		
+		const cards = [
+			 // Clubs
+    'English_pattern_ace_of_clubs.svg', 'English_pattern_2_of_clubs.svg', 'English_pattern_3_of_clubs.svg', 'English_pattern_4_of_clubs.svg', 
+    'English_pattern_5_of_clubs.svg', 'English_pattern_6_of_clubs.svg', 'English_pattern_7_of_clubs.svg', 'English_pattern_8_of_clubs.svg', 
+    'English_pattern_9_of_clubs.svg', 'English_pattern_10_of_clubs.svg', 'English_pattern_jack_of_clubs.svg', 'English_pattern_queen_of_clubs.svg', 
+    'English_pattern_king_of_clubs.svg',
 
     // Diamonds
-    'English_pattern_ace_of_diamonds.svg.png', 'English_pattern_2_of_diamonds.svg.png', 'English_pattern_3_of_diamonds.svg.png', 'English_pattern_4_of_diamonds.svg.png', 
-    'English_pattern_5_of_diamonds.svg.png', 'English_pattern_6_of_diamonds.svg.png', 'English_pattern_7_of_diamonds.svg.png', 'English_pattern_8_of_diamonds.svg.png', 
-    'English_pattern_9_of_diamonds.svg.png', 'English_pattern_10_of_diamonds.svg.png', 'English_pattern_jack_of_diamonds.svg.png', 'English_pattern_queen_of_diamonds.svg.png', 
-    'English_pattern_king_of_diamonds.svg.png',
+    'English_pattern_ace_of_diamonds.svg', 'English_pattern_2_of_diamonds.svg', 'English_pattern_3_of_diamonds.svg', 'English_pattern_4_of_diamonds.svg', 
+    'English_pattern_5_of_diamonds.svg', 'English_pattern_6_of_diamonds.svg', 'English_pattern_7_of_diamonds.svg', 'English_pattern_8_of_diamonds.svg', 
+    'English_pattern_9_of_diamonds.svg', 'English_pattern_10_of_diamonds.svg', 'English_pattern_jack_of_diamonds.svg', 'English_pattern_queen_of_diamonds.svg', 
+    'English_pattern_king_of_diamonds.svg',
 
     // Hearts
-    'English_pattern_ace_of_hearts.svg.png', 'English_pattern_2_of_hearts.svg.png', 'English_pattern_3_of_hearts.svg.png', 'English_pattern_4_of_hearts.svg.png', 
-    'English_pattern_5_of_hearts.svg.png', 'English_pattern_6_of_hearts.svg.png', 'English_pattern_7_of_hearts.svg.png', 'English_pattern_8_of_hearts.svg.png', 
-    'English_pattern_9_of_hearts.svg.png', 'English_pattern_10_of_hearts.svg.png', 'English_pattern_jack_of_hearts.svg.png', 'English_pattern_queen_of_hearts.svg.png', 
-    'English_pattern_king_of_hearts.svg.png',
+    'English_pattern_ace_of_hearts.svg', 'English_pattern_2_of_hearts.svg', 'English_pattern_3_of_hearts.svg', 'English_pattern_4_of_hearts.svg', 
+    'English_pattern_5_of_hearts.svg', 'English_pattern_6_of_hearts.svg', 'English_pattern_7_of_hearts.svg', 'English_pattern_8_of_hearts.svg', 
+    'English_pattern_9_of_hearts.svg', 'English_pattern_10_of_hearts.svg', 'English_pattern_jack_of_hearts.svg', 'English_pattern_queen_of_hearts.svg', 
+    'English_pattern_king_of_hearts.svg',
 
     // Spades
-    'English_pattern_ace_of_spades.svg.png', 'English_pattern_2_of_spades.svg.png', 'English_pattern_3_of_spades.svg.png', 'English_pattern_4_of_spades.svg.png', 
-    'English_pattern_5_of_spades.svg.png', 'English_pattern_6_of_spades.svg.png', 'English_pattern_7_of_spades.svg.png', 'English_pattern_8_of_spades.svg.png', 
-    'English_pattern_9_of_spades.svg.png', 'English_pattern_10_of_spades.svg.png', 'English_pattern_jack_of_spades.svg.png', 'English_pattern_queen_of_spades.svg.png', 
-    'English_pattern_king_of_spades.svg.png',
+    'English_pattern_ace_of_spades.svg', 'English_pattern_2_of_spades.svg', 'English_pattern_3_of_spades.svg', 'English_pattern_4_of_spades.svg', 
+    'English_pattern_5_of_spades.svg', 'English_pattern_6_of_spades.svg', 'English_pattern_7_of_spades.svg', 'English_pattern_8_of_spades.svg', 
+    'English_pattern_9_of_spades.svg', 'English_pattern_10_of_spades.svg', 'English_pattern_jack_of_spades.svg', 'English_pattern_queen_of_spades.svg', 
+    'English_pattern_king_of_spades.svg',
 
     // Jokers
-    'English_pattern_joker_black.svg.png', 'English_pattern_joker_red.svg.png'
-];
+    'English_pattern_joker_black.svg', 'English_pattern_joker_red.svg'
+		]
 
+		function dealCards() {
+			const receivedCards = document.getElementById('receivedCards');
+			receivedCards.innerHTML = '';
+			dealtCards = [];
 
-        const dealtCards = [];
+			const availableCards = cards.filter(card => !dealtCards.includes(card) && !discardedCards.includes(card));
+			const cardsToDeal = Math.min(8, availableCards.length);
 
-        // Function to deal random cards
-        document.getElementById("dealBtn").addEventListener("click", dealCards);
+			while (dealtCards.length < cardsToDeal) {
+				const name = Math.floor(Math.random() * availableCards.length);
+				const card = availableCards[name];
 
-        function dealCards() {
-            const deckArea = document.getElementById('deckArea');
-            deckArea.innerHTML = ''; // Clear previous cards
-            dealtCards.length = 0; // Clear dealt cards
-            
-            const shuffledDeck = shuffleDeck([...deck]); // Shuffle and copy the deck
-            
-            // Deal 5 random cards
-            for (let i = 0; i < 5; i++) {
-                const cardFile = shuffledDeck.pop();
-                dealtCards.push(cardFile);
+				if (!dealtCards.includes(card)) {
+					dealtCards.push(card);
+					const cardElement = document.createElement('img');
+					cardElement.src = `Cards/${card}.png`;
+					cardElement.id = card;
+					cardElement.classList.add('disCard');
+					cardElement.draggable = true;
+					cardElement.addEventListener('dragstart', dragStart);
+					receivedCards.appendChild(cardElement);
+				}
+			}
+		}	
+		
+		function dragStart(event) {
+			event.dataTransfer.setData('text/plain', event.target.id);
+		}
 
-                const cardDiv = document.createElement('div');
-                cardDiv.classList.add('cards');
-                cardDiv.innerHTML = `<img src="cards/${cardFile}" draggable="true" id="card-${i}" ondragstart="drag(event)">`;
-                deckArea.appendChild(cardDiv);
-            }
-        }
+		const messageDiv = document.getElementById('disCardMessage');
+		document.getElementById('dealButton').addEventListener('click', dealCards);
+		
+		document.getElementById('resetButton').addEventListener('click', function() {
+			document.getElementById('receivedCards').innerHTML = '';
+			document.getElementById('discardPile').innerHTML = '<h3>Discard Pile</h3>';
+			dealtCards = [];
+			discardedCards = [];
+			messageDiv.innerHTML = '';
+		});
+		
+		const discardPile = document.getElementById('discardPile');
+		discardPile.addEventListener('dragover', (event) => {
+			event.preventDefault();
+		});
+		
+		discardPile.addEventListener('drop', (event) => {
+			event.preventDefault();
+			const data = event.dataTransfer.getData('text/plain');
+			const disCard = document.getElementById(data);
+			if (disCard) {
+				discardPile.appendChild(disCard);
+				disCard.draggable = false;
+				messageDiv.innerHTML = `Card ${data.replace(/_/g, ' ')} discarded!`;
+				discardedCards.push(data);
+			}
+		});
+	</script>
+    <script>
+        document.querySelectorAll('nav ul li').forEach(function(menuItem) {
+            menuItem.addEventListener('mouseover', function() {
+                const dropdown = this.querySelector('.dropdown');
+                if (dropdown) {
+                    dropdown.classList.add('open-menu');
+                }
+            });
 
-        // Shuffle the deck
-        function shuffleDeck(deck) {
-            for (let i = deck.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [deck[i], deck[j]] = [deck[j], deck[i]];
-            }
-            return deck;
-        }
-
-        // Allow drop on the discard pile
-        const discardPile = document.getElementById('discardPile');
-        discardPile.addEventListener('dragover', allowDrop);
-        discardPile.addEventListener('drop', drop);
-
-        function allowDrop(event) {
-            event.preventDefault();
-        }
-
-        function drag(event) {
-            event.dataTransfer.setData("text", event.target.id);
-        }
-
-        function drop(event) {
-            event.preventDefault();
-            const cardId = event.dataTransfer.getData("text");
-            const card = document.getElementById(cardId);
-
-            discardPile.appendChild(card);
-            card.style.position = 'relative';
-            card.style.margin = '5px';
-
-            // Trigger an event (simple alert for demo)
-            alert('Card discarded!');
-        }
+            menuItem.addEventListener('mouseout', function() {
+                const dropdown = this.querySelector('.dropdown');
+                if (dropdown) {
+                    dropdown.classList.remove('open-menu');
+                }
+            });
+        });
     </script>
 <footer>
     <p>&copy; 2024 Created By Ryan Garcia-Hernandez</p>

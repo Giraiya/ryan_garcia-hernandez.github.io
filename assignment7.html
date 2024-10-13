@@ -96,7 +96,22 @@
         </nav>
     </header>
 <body>
-    <h1>Drag and Drop Card Game</h1>
+<article>
+		<form id="cardDeal">
+			<h1>Drag and Drop Card Game</h1>				
+				<div class="formButtons">
+					<input type="button" id="dealButton" value="Deal Cards">
+					<input type="button" id="resetButton" value="Reset">
+
+				</div>
+				<div id="receivedCards" class="card-area">
+				</div>
+				<div id="disCardMessage" class="disCardMessage"></div>
+				<div id="discardPile" class="card-area">
+					<h3>Discard Pile</h3>
+				</div>
+		</form>
+	</article>
   <!--  <button id="dealBtn">Deal Cards</button>
 
     <div class="deck-area" id="deckArea">
@@ -112,14 +127,14 @@
         <!-- You can add more placeholders as needed -->
   <!--   </div>  -->
 
-    <div id="receivedCards"></div> <!-- Added -->
-    <div id="discardPile"><h3>Discard Pile</h3></div> <!-- Added -->
+  <!--  <div id="receivedCards"></div> 
+    <div id="discardPile"><h3>Discard Pile</h3></div> 
     <button id="dealButton">Deal Cards</button> <!-- Ensure the ID matches -->
-    <button id="resetButton">Reset</button> <!-- Ensure the ID matches -->
-    <div id="disCardMessage"></div> <!-- Added for messages -->
+  <!--  <button id="resetButton">Reset</button> <!-- Ensure the ID matches -->
+   <!-- <div id="disCardMessage"></div> <!-- Added for messages -->
 
     <!-- Deal Cards button -->
-   <button id="deal-button">Deal Cards</button> 
+  <!-- <button id="deal-button">Deal Cards</button> 
 
   <!--  <script src="script.js"></script> --> <!-- Link to JavaScript file --> 
 </body>

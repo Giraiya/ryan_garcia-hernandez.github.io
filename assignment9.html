@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Assignment 9 - JavaScript animation of an object bouncing inside a canvas, with interactive response to mouse clicks.">
+    <meta name="author" content="Ryan Garcia-Hernandez">
+    <meta name="keywords" content="HTML5, JavaScript, Canvas, Animation, Assignment 9, COP4813, Web Systems">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Assignment 9 - Animation</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <h1>Assignment 9: Animation </h1>
+    <canvas id="animationCanvas" width="500" height="500"></canvas>
+
+    <script>
+        const canvas = document.getElementById('animationCanvas');
+        const ctx = canvas.getContext('2d');
+        let x = canvas.width / 2;
+        let y = canvas.height / 2;
+        let dx = 2;
+        let dy = 2;
+        const radius = 20;
+
+        function drawCircle() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            ctx.fillStyle = 'blue';
+            ctx.fill();
+            ctx.stroke();
+        }
+
+        function updatePosition() {
+            x += dx;
+            y += dy;
+
+            // Bounce off the walls
+            if (x + radius > canvas.width || x - radius < 0) {
+                dx = -dx;
+            }
+            if (y + radius > canvas.height || y - radius < 0) {
+                dy = -dy;
+            }
+        }
+
+        function animate() {
+            drawCircle();
+            updatePosition();
+            requestAnimationFrame(animate);
+        }
+
+        // Respond to mouse clicks
+        canvas.addEventListener('click', () => {
+            dx = -dx;
+            dy = -dy;
+        });
+
+        // Start the animation
+        animate();
+    </script>
+</body>
+</html>

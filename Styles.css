@@ -1,0 +1,77 @@
+/* Mobile-first approach */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Header and Navigation for Mobile */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.nav-links {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Stacked navigation for mobile */
+    justify-content: center;
+    background-color: #444;
+}
+
+.nav-links li {
+    position: relative;
+    margin: 5px 0; /* Spacing between items */
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    text-align: center; /* Center text for mobile */
+}
+
+/* Dropdown for mobile */
+.nav-links li:hover .dropdown-content {
+    display: block;
+    position: static; /* Allow dropdown to expand naturally on mobile */
+}
+
+/* Image Scaling for Mobile */
+img {
+    max-width: 90%; /* Adjust image size for mobile */
+    height: auto;
+}
+
+/* Footer Adjustments */
+footer {
+    position: static; /* Ensure footer doesn't overlap on mobile */
+    padding: 15px;
+}
+
+/* Media Query for small devices (max-width: 768px) */
+@media (max-width: 768px) {
+    .nav-links a {
+        padding: 8px 16px;
+    }
+}
+
+/* Media Query for extra small devices (max-width: 480px) */
+@media (max-width: 480px) {
+    .nav-links {
+        flex-direction: column;
+    }
+    .nav-links li {
+        margin: 5px 0;
+    }
+    .nav-links a {
+        padding: 12px 20px;
+        text-align: center;
+    }
+}

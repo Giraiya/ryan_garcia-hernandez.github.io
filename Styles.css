@@ -51,10 +51,15 @@ img {
 
 /* Footer Adjustments */
 footer {
+    background-color: #333;
+    color: #fff;
     position: static; /* Ensure footer doesn't overlap on mobile */
     padding: 15px;
+    /*width: 100%;
+      padding: 10px;
+      bottom: 0;*/
 }
-
+    
 /* Media Query for small devices (max-width: 768px) */
 @media (max-width: 768px) {
     .nav-links a {

@@ -1,22 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A personal website for COP4813 - Web Systems I to demonstrate web programming skills.">
-  <meta name="keywords" content="COP4813, Web Systems, Web Development, Assignments, Portfolio">
-  <meta name="author" content="Ryan Garcia-Hernandez">
-  <title>BSIT Class Advisor Tool</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A class advising tool for the Information Technology BSIT program.">
+    <meta name="keywords" content="BSIT, Advising Tool, Daytona State College, Dynamic Interface">
+    <meta name="author" content="Ryan Garcia-Hernandez">
+    <title>BSIT Class Advising Tool</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+        }
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        .nav-links li {
+            position: relative;
+        }
+        .nav-links a {
+            display: block;
+            padding: 1rem;
+            color: white;
+            text-decoration: none;
+            background-color: #444;
+        }
+        .nav-links a:hover {
+            background-color: #555;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            background-color: #333;
+            min-width: 200px;
+            z-index: 1;
+        }
+        .dropdown-content a {
+            padding: 0.5rem;
+            color: white;
+            display: block;
+            text-decoration: none;
+        }
+        .dropdown-content a:hover {
+            background-color: #555;
+        }
+        .nav-links li:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Advising tool section */
+        main {
+            padding: 2rem;
+        }
+        #advising-tool {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #e0e0e0;
+            border-radius: 8px;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>BSIT Degree Advising Tool</h1>
-    <p>Select the classes you have completed to see eligible courses for the BSIT program.</p>
-    <div id="courseList"></div>
-  </div>
+    <header>
+        <h1>Ryan Garcia-Hernandez's Web Portfolio - Class Advising Tool</h1>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="Index.html">Home</a></li>
+                <li><a href="#">My Classes</a>
+                    <div class="dropdown-content">
+                        <a href="class1.html">Class 1</a>
+                        <a href="class2.html">Class 2</a>
+                    </div>
+                </li>
+                <li><a href="#">My Assignments</a>
+                    <div class="dropdown-content">
+                        <a href="assignment1.html">Assignment 1</a>
+                        <a href="assignment2.html">Assignment 2</a>
+                        <a href="assignment3.html">Assignment 3</a>
+                        <a href="assignment4.html">Assignment 4</a>
+                        <a href="assignment5.html">Assignment 5</a>
+                        <a href="assignment6.html">Assignment 6</a>
+                        <a href="assignment7.html">Assignment 7</a>
+                        <a href="assignment8.html">Assignment 8</a>
+                        <a href="assignment9.html">Assignment 9</a>
+                        <a href="assignment10.html">Assignment 10</a>
+                        <a href="assignment11.html">Assignment 11</a>
+                        <a href="assignment12.html">Assignment 12</a>
+                        <a href="assignment13.html">Assignment 13</a>
+                        <a href="assignment14.html">Assignment 14</a>
+                        <a href="assignment15.html">Assignment 15</a>
+                    </div>
+                </li>
+                <li><a href="#">My Favorite Sites</a>
+                    <div class="dropdown-content">
+                        <a href="https://www.example1.com">Favorite Site 1</a>
+                        <a href="https://www.example2.com">Favorite Site 2</a>
+                    </div>
+                </li>
+                <li><a href="#">Programming Sites</a>
+                    <div class="dropdown-content">
+                        <a href="https://www.programming1.com">Programming Site 1</a>
+                        <a href="https://www.programming2.com">Programming Site 2</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-  <script src="data.js"></script>
-  <script src="scripta11.js"></script>
+    <main>
+        <h2>BSIT Program Advising Tool</h2>
+        <p>Select the courses you have completed to see what you are eligible to take next.</p>
+        <div id="advising-tool"></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Ryan Garcia-Hernandez</p>
+    </footer>
+
+    <!-- Load JSON data and the main script -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

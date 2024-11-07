@@ -2,6 +2,8 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     const courseList = document.getElementById("courseList");
+    console.log(courseList); // This should show the element in the console, not null
+
 
     if (!programData) {
         console.error("programData is not defined. Check data.js.");

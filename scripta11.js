@@ -1,16 +1,14 @@
 // scripta11.js
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const courseList = document.getElementById("courseList");
-    console.log(courseList); // This should show the element in the console, not null
 
-
+    console.log(courseList); // Debugging: Ensure element is present in DOM
     if (!programData) {
         console.error("programData is not defined. Check data.js.");
         return;
     }
-
-    console.log("programData loaded:", programData); // Confirm data loaded
+    console.log("programData loaded:", programData); // Debugging: Confirm data loaded
 
     // Populate courses dynamically based on program data
     function populateCourses(data) {
@@ -43,6 +41,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 courseLabel.setAttribute("for", course.code);
                 courseLabel.innerText = `${course.code}: ${course.name}`;
 
+                // Disable checkbox if prerequisites are not met
+                courseCheckbox.disabled = !checkPrerequisites(course);
+
                 courseDiv.appendChild(courseCheckbox);
                 courseDiv.appendChild(courseLabel);
                 categoryDiv.appendChild(courseDiv);
@@ -52,11 +53,46 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Handles the selection of a course and updates eligibility based on prerequisites
+    // Check if prerequisites are completed for a course
+    function checkPrerequisites(course) {
+        if (!course.prerequisites) return true;
+
+        return course.prerequisites.every(prereq => {
+            if (Array.isArray(prereq)) {
+                return prereq.some(courseCode => isCourseCompleted(courseCode));
+            } else {
+                return isCourseCompleted(prereq);
+            }
+        });
+    }
+
+    // Check if a specific course is completed
+    function isCourseCompleted(courseCode) {
+        const course = findCourseByCode(courseCode);
+        return course && course.completed;
+    }
+
+    // Locate a course by its code
+    function findCourseByCode(courseCode) {
+        for (let requirement of programData.degreeRequirements) {
+            const course = requirement.courses.find(c => c.code === courseCode);
+            if (course) return course;
+        }
+        return null;
+    }
+
+    // Handle selection of a course, update prerequisites
     function handleCourseSelection(course) {
         course.completed = !course.completed;
         console.log(`Course ${course.code} completed status:`, course.completed); // Debugging
 
+        // Refresh eligibility of each course based on prerequisites
+        document.querySelectorAll("input[type='checkbox']").forEach(checkbox => {
+            const course = findCourseByCode(checkbox.id);
+            if (course) checkbox.disabled = !checkPrerequisites(course);
+        });
+
+        // Handle disabling alternates if course is completed
         if (course.alternate) {
             course.alternate.forEach(altCourseCode => {
                 const altCourseCheckbox = document.getElementById(altCourseCode);
@@ -65,6 +101,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // Initialize the UI with the courses from the JSON data
+    // Initialize the UI with the courses from programData
     populateCourses(programData);
 });

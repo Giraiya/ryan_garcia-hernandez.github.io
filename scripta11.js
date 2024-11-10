@@ -28,31 +28,32 @@ document.addEventListener("DOMContentLoaded", function () {
                 categoryDiv.appendChild(notesParagraph);
             }
 
-            // Ensure courses array is defined and valid
-            if (Array.isArray(requirement.courses)) {
-                requirement.courses.forEach(course => {
-                    const courseDiv = document.createElement("div");
-                    courseDiv.classList.add("course");
-
-                    const courseCheckbox = document.createElement("input");
-                    courseCheckbox.type = "checkbox";
-                    courseCheckbox.id = course.code;
-                    courseCheckbox.addEventListener("change", () => handleCourseSelection(course));
-
-                    const courseLabel = document.createElement("label");
-                    courseLabel.setAttribute("for", course.code);
-                    courseLabel.innerText = `${course.code}: ${course.name}`;
-
-                    // Disable checkbox if prerequisites are not met
-                    courseCheckbox.disabled = !checkPrerequisites(course);
-
-                    courseDiv.appendChild(courseCheckbox);
-                    courseDiv.appendChild(courseLabel);
-                    categoryDiv.appendChild(courseDiv);
-                });
-            } else {
-                console.error(`Invalid or missing courses array in category: ${requirement.category}`);
+            // Set courses to an empty array if missing or invalid
+            const coursesArray = Array.isArray(requirement.courses) ? requirement.courses : [];
+            if (!coursesArray.length) {
+                console.warn(`No courses found in category: ${requirement.category}`);
             }
+
+            coursesArray.forEach(course => {
+                const courseDiv = document.createElement("div");
+                courseDiv.classList.add("course");
+
+                const courseCheckbox = document.createElement("input");
+                courseCheckbox.type = "checkbox";
+                courseCheckbox.id = course.code;
+                courseCheckbox.addEventListener("change", () => handleCourseSelection(course));
+
+                const courseLabel = document.createElement("label");
+                courseLabel.setAttribute("for", course.code);
+                courseLabel.innerText = `${course.code}: ${course.name}`;
+
+                // Disable checkbox if prerequisites are not met
+                courseCheckbox.disabled = !checkPrerequisites(course);
+
+                courseDiv.appendChild(courseCheckbox);
+                courseDiv.appendChild(courseLabel);
+                categoryDiv.appendChild(courseDiv);
+            });
 
             courseList.appendChild(categoryDiv);
         });

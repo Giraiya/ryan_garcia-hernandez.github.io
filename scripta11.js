@@ -1,16 +1,17 @@
-// scripta11.js
-
+// Ensure DOM is loaded before running scripts
 document.addEventListener("DOMContentLoaded", function () {
     const courseList = document.getElementById("courseList");
 
     console.log(courseList); // Debugging: Ensure element is present in DOM
-    if (!programData) {
-        console.error("programData is not defined. Check data.js.");
+    
+    // Verify programData exists and is structured correctly
+    if (typeof programData === "undefined" || !programData.degreeRequirements) {
+        console.error("programData or programData.degreeRequirements is not defined or improperly structured.");
         return;
     }
     console.log("programData loaded:", programData); // Debugging: Confirm data loaded
 
-    // Populate courses dynamically based on program data
+    // Function to populate courses dynamically based on program data
     function populateCourses(data) {
         data.degreeRequirements.forEach(requirement => {
             const categoryDiv = document.createElement("div");
@@ -20,14 +21,14 @@ document.addEventListener("DOMContentLoaded", function () {
             categoryHeader.innerText = requirement.category;
             categoryDiv.appendChild(categoryHeader);
 
-            // Display any category notes
+            // Display category notes if they exist
             if (requirement.notes) {
                 const notesParagraph = document.createElement("p");
                 notesParagraph.innerText = requirement.notes;
                 categoryDiv.appendChild(notesParagraph);
             }
 
-            // Create checkbox for each course
+            // Create a checkbox for each course
             requirement.courses.forEach(course => {
                 const courseDiv = document.createElement("div");
                 courseDiv.classList.add("course");
@@ -53,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Check if prerequisites are completed for a course
+    // Function to check if prerequisites are met for a course
     function checkPrerequisites(course) {
         if (!course.prerequisites) return true;
 
@@ -66,13 +67,13 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Check if a specific course is completed
+    // Function to check if a course is completed
     function isCourseCompleted(courseCode) {
         const course = findCourseByCode(courseCode);
         return course && course.completed;
     }
 
-    // Locate a course by its code
+    // Function to locate a course by its code
     function findCourseByCode(courseCode) {
         for (let requirement of programData.degreeRequirements) {
             const course = requirement.courses.find(c => c.code === courseCode);
@@ -81,26 +82,28 @@ document.addEventListener("DOMContentLoaded", function () {
         return null;
     }
 
-    // Handle selection of a course, update prerequisites
+    // Handle course selection, toggling completion status and updating prerequisites
     function handleCourseSelection(course) {
         course.completed = !course.completed;
         console.log(`Course ${course.code} completed status:`, course.completed); // Debugging
 
-        // Refresh eligibility of each course based on prerequisites
+        // Update eligibility of each course based on prerequisites
         document.querySelectorAll("input[type='checkbox']").forEach(checkbox => {
             const course = findCourseByCode(checkbox.id);
             if (course) checkbox.disabled = !checkPrerequisites(course);
         });
 
-        // Handle disabling alternates if course is completed
+        // Disable alternate courses if one is completed
         if (course.alternate) {
             course.alternate.forEach(altCourseCode => {
                 const altCourseCheckbox = document.getElementById(altCourseCode);
-                altCourseCheckbox.disabled = course.completed;
+                if (altCourseCheckbox) {
+                    altCourseCheckbox.disabled = course.completed;
+                }
             });
         }
     }
 
-    // Initialize the UI with the courses from programData
+    // Populate UI with courses from programData
     populateCourses(programData);
 });

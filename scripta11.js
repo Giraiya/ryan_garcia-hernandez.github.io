@@ -11,53 +11,57 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     console.log("programData loaded:", programData); // Debugging: Confirm data loaded
 
-    // Function to populate courses dynamically based on program data
-    function populateCourses(data) {
-        data.degreeRequirements.forEach(requirement => {
-            const categoryDiv = document.createElement("div");
-            categoryDiv.classList.add("course-category");
+    // Populate courses dynamically based on program data
+function populateCourses(data) {
+    data.degreeRequirements.forEach(requirement => {
+        const categoryDiv = document.createElement("div");
+        categoryDiv.classList.add("course-category");
 
-            const categoryHeader = document.createElement("h2");
-            categoryHeader.innerText = requirement.category;
-            categoryDiv.appendChild(categoryHeader);
+        const categoryHeader = document.createElement("h2");
+        categoryHeader.innerText = requirement.category;
+        categoryDiv.appendChild(categoryHeader);
 
-            // Display category notes if they exist
-            if (requirement.notes) {
-                const notesParagraph = document.createElement("p");
-                notesParagraph.innerText = requirement.notes;
-                categoryDiv.appendChild(notesParagraph);
-            }
+        // Display category notes if they exist
+        if (requirement.notes) {
+            const notesParagraph = document.createElement("p");
+            notesParagraph.innerText = requirement.notes;
+            categoryDiv.appendChild(notesParagraph);
+        }
 
-            // Set courses to an empty array if missing or invalid
-            const coursesArray = Array.isArray(requirement.courses) ? requirement.courses : [];
-            if (!coursesArray.length) {
-                console.warn(`No courses found in category: ${requirement.category}`);
-            }
+        // Set courses to an empty array if missing or invalid
+        const coursesArray = Array.isArray(requirement.courses) ? requirement.courses : [];
+        if (!coursesArray.length) {
+            console.info(`No courses listed in category: ${requirement.category}`);
+            const noCoursesMessage = document.createElement("p");
+            noCoursesMessage.innerText = "No courses available in this category.";
+            categoryDiv.appendChild(noCoursesMessage);
+        }
 
-            coursesArray.forEach(course => {
-                const courseDiv = document.createElement("div");
-                courseDiv.classList.add("course");
+        // Create checkbox for each course
+        coursesArray.forEach(course => {
+            const courseDiv = document.createElement("div");
+            courseDiv.classList.add("course");
 
-                const courseCheckbox = document.createElement("input");
-                courseCheckbox.type = "checkbox";
-                courseCheckbox.id = course.code;
-                courseCheckbox.addEventListener("change", () => handleCourseSelection(course));
+            const courseCheckbox = document.createElement("input");
+            courseCheckbox.type = "checkbox";
+            courseCheckbox.id = course.code;
+            courseCheckbox.addEventListener("change", () => handleCourseSelection(course));
 
-                const courseLabel = document.createElement("label");
-                courseLabel.setAttribute("for", course.code);
-                courseLabel.innerText = `${course.code}: ${course.name}`;
+            const courseLabel = document.createElement("label");
+            courseLabel.setAttribute("for", course.code);
+            courseLabel.innerText = `${course.code}: ${course.name}`;
 
-                // Disable checkbox if prerequisites are not met
-                courseCheckbox.disabled = !checkPrerequisites(course);
+            // Disable checkbox if prerequisites are not met
+            courseCheckbox.disabled = !checkPrerequisites(course);
 
-                courseDiv.appendChild(courseCheckbox);
-                courseDiv.appendChild(courseLabel);
-                categoryDiv.appendChild(courseDiv);
-            });
-
-            courseList.appendChild(categoryDiv);
+            courseDiv.appendChild(courseCheckbox);
+            courseDiv.appendChild(courseLabel);
+            categoryDiv.appendChild(courseDiv);
         });
-    }
+
+        courseList.appendChild(categoryDiv);
+    });
+}
 
     // Function to check if prerequisites are met for a course
     function checkPrerequisites(course) {
@@ -112,3 +116,4 @@ document.addEventListener("DOMContentLoaded", function () {
     // Populate UI with courses from programData
     populateCourses(programData);
 });
+

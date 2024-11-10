@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(courseList); // Debugging: Ensure element is present in DOM
     
     // Verify programData exists and is structured correctly
-    if (typeof programData === "undefined" || !programData.degreeRequirements) {
+    if (typeof programData === "undefined" || !Array.isArray(programData.degreeRequirements)) {
         console.error("programData or programData.degreeRequirements is not defined or improperly structured.");
         return;
     }
@@ -28,27 +28,31 @@ document.addEventListener("DOMContentLoaded", function () {
                 categoryDiv.appendChild(notesParagraph);
             }
 
-            // Create a checkbox for each course
-            requirement.courses.forEach(course => {
-                const courseDiv = document.createElement("div");
-                courseDiv.classList.add("course");
+            // Ensure courses array is defined and valid
+            if (Array.isArray(requirement.courses)) {
+                requirement.courses.forEach(course => {
+                    const courseDiv = document.createElement("div");
+                    courseDiv.classList.add("course");
 
-                const courseCheckbox = document.createElement("input");
-                courseCheckbox.type = "checkbox";
-                courseCheckbox.id = course.code;
-                courseCheckbox.addEventListener("change", () => handleCourseSelection(course));
+                    const courseCheckbox = document.createElement("input");
+                    courseCheckbox.type = "checkbox";
+                    courseCheckbox.id = course.code;
+                    courseCheckbox.addEventListener("change", () => handleCourseSelection(course));
 
-                const courseLabel = document.createElement("label");
-                courseLabel.setAttribute("for", course.code);
-                courseLabel.innerText = `${course.code}: ${course.name}`;
+                    const courseLabel = document.createElement("label");
+                    courseLabel.setAttribute("for", course.code);
+                    courseLabel.innerText = `${course.code}: ${course.name}`;
 
-                // Disable checkbox if prerequisites are not met
-                courseCheckbox.disabled = !checkPrerequisites(course);
+                    // Disable checkbox if prerequisites are not met
+                    courseCheckbox.disabled = !checkPrerequisites(course);
 
-                courseDiv.appendChild(courseCheckbox);
-                courseDiv.appendChild(courseLabel);
-                categoryDiv.appendChild(courseDiv);
-            });
+                    courseDiv.appendChild(courseCheckbox);
+                    courseDiv.appendChild(courseLabel);
+                    categoryDiv.appendChild(courseDiv);
+                });
+            } else {
+                console.error(`Invalid or missing courses array in category: ${requirement.category}`);
+            }
 
             courseList.appendChild(categoryDiv);
         });
@@ -76,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to locate a course by its code
     function findCourseByCode(courseCode) {
         for (let requirement of programData.degreeRequirements) {
-            const course = requirement.courses.find(c => c.code === courseCode);
+            const course = requirement.courses?.find(c => c.code === courseCode);
             if (course) return course;
         }
         return null;

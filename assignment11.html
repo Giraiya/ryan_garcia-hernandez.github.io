@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="styles.css">
     <title>BSIT Class Advising Tool</title>
     <style>
-      /*  /* General styling 
+        /* General styling */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -65,9 +65,83 @@
         }
         .nav-links li:hover .dropdown-content {
             display: block;
-        }*/
+        }
 
-     /* Advising tool section */
+    /* Advising tool section */
+    main {
+        padding: 2rem;
+        text-align: left;
+    }
+    
+    #advising-tool {
+        margin-top: 1rem;
+        padding: 1.5rem;
+        background: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        font-family: Arial, sans-serif;
+    }
+    
+    .course-list {
+        margin: 0;
+        padding: 0;
+        list-style: none; /* Remove default bullet points */
+    }
+    
+    .course-item {
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .course-item h3 {
+        margin: 0;
+        font-size: 1.25rem;
+        color: #333;
+        font-weight: bold;
+    }
+    
+    .course-details {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 0.5rem;
+        font-size: 0.95rem;
+        color: #555;
+    }
+    
+    .course-details span {
+        display: inline-block;
+        background-color: #e8f4f8;
+        padding: 0.5rem 0.75rem;
+        border-radius: 4px;
+        font-weight: 500;
+        color: #007acc;
+    }
+    
+    .course-prerequisites,
+    .course-credits {
+        margin-top: 0.75rem;
+    }
+    
+    .course-prerequisites p,
+    .course-credits p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: #444;
+        line-height: 1.5;
+    }
+    
+    /* Responsive improvements */
+    @media (max-width: 600px) {
+        .course-details {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+    }
 
 
     

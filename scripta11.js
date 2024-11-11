@@ -64,6 +64,26 @@ function addCourseElement(course, courseList) {
     courseDiv.appendChild(checkbox);
     courseDiv.appendChild(label);
 
+    // Adding Prerequisites section
+    if (course.preReqs?.length > 0 || course.orPreReqs?.length > 0) {
+        const prereqDiv = document.createElement("div");
+        prereqDiv.classList.add("prerequisites");
+
+        let prerequisitesText = "Prerequisites: ";
+        const prereqs = [];
+        if (course.preReqs?.length > 0) {
+            prereqs.push(...course.preReqs);
+        }
+        if (course.orPreReqs?.length > 0) {
+            prereqs.push(...course.orPreReqs);
+        }
+
+        prerequisitesText += prereqs.join(", ");
+        prereqDiv.textContent = prerequisitesText;
+
+        courseDiv.appendChild(prereqDiv);
+    }
+
     if (course.preReqs?.length > 0 || course.orPreReqs?.length > 0) {
         const infoDiv = document.createElement("div");
         infoDiv.classList.add("info");

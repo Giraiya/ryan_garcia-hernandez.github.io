@@ -67,7 +67,7 @@
             display: block;
         }
 
-        /* Advising tool section */
+     /* Advising tool section */
 main {
     padding: 3rem 2rem;
     background-color: #f9f9f9; /* Light gray background for the main section */
@@ -91,6 +91,7 @@ main {
     transform: scale(1.02); /* Slight zoom effect when hovering over the advising tool */
 }
 
+/* Heading styles */
 h2, h3, h4 {
     color: #222; /* Darker text for headings */
     font-weight: 600;
@@ -114,6 +115,7 @@ h4 {
     margin-bottom: 0.5rem;
 }
 
+/* Course list styling */
 ul {
     list-style-type: none;
     padding: 0;
@@ -122,14 +124,48 @@ ul {
 
 ul li {
     font-size: 1.1rem;
-    color: #555; /* Softer color for course list items */
-    margin: 1rem 0;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #ddd; /* Subtle line separating course items */
+    color: #333; /* Dark text color for course items */
+    margin: 1.5rem 0;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: #f8f8f8; /* Light background for each course */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow for separation */
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
 }
 
-ul li:last-child {
-    border-bottom: none; /* Remove bottom border on last item */
+ul li:hover {
+    background-color: #e8e8e8; /* Light hover effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+/* Course title (course name) */
+ul li .course-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+/* Course prerequisites and credits */
+ul li .course-details {
+    font-size: 1rem;
+    color: #555;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+ul li .course-details .prerequisites {
+    font-style: italic;
+    color: #888;
+}
+
+ul li .course-details .credits {
+    font-weight: bold;
+    color: #4CAF50; /* Green for credits */
 }
 
 ul li span {
@@ -137,11 +173,13 @@ ul li span {
     color: #888;
 }
 
+/* Strikethrough for completed courses */
 ul li[style*="line-through"] {
     color: #bbb;
     text-decoration: line-through;
 }
 
+/* Button styling for course actions */
 ul li button {
     background-color: #4CAF50; /* Green for action buttons */
     color: white;
@@ -151,6 +189,7 @@ ul li button {
     cursor: pointer;
     font-size: 1rem;
     transition: background-color 0.3s ease;
+    margin-top: 1rem;
 }
 
 ul li button:hover {
@@ -208,6 +247,17 @@ ul li button:disabled {
         font-size: 1rem;
     }
 }
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
 
 footer {
     background-color: #333;

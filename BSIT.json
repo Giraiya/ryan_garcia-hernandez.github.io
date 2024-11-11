@@ -11,7 +11,7 @@
           "completed": false,
           "preReqs": [],
           "orPreReqs": [],
-          "info": "An introductory course in programming."
+    
         },
         {
           "code": "COP2220",
@@ -20,7 +20,7 @@
           "completed": false,
           "preReqs": ["COP1000"],
           "orPreReqs": ["COP2360", "COP2800"],
-          "info": "A course focused on C++ programming, requiring Intro to Programming as a prerequisite."
+        
         }
       ],
       "notes": "Two semesters of programming required."
@@ -59,7 +59,7 @@
           "completed": false,
           "preReqs": ["COP1000"],
           "orPreReqs": [],
-          "info": "An advanced course in data structures, requiring Intro to Programming as a prerequisite."
+          
         },
         {
           "code": "COP4610",
@@ -68,7 +68,7 @@
           "completed": false,
           "preReqs": ["COP1000"],
           "orPreReqs": [],
-          "info": "A course covering the fundamentals of operating systems, requiring Intro to Programming as a prerequisite."
+          
         },
         {
           "code": "CNT3104",
@@ -77,7 +77,7 @@
           "completed": false,
           "preReqs": [],
           "orPreReqs": [],
-          "info": "An introduction to telecommunications systems."
+          
         },
         {
           "code": "CIS4250",
@@ -86,7 +86,7 @@
           "completed": false,
           "preReqs": [],
           "orPreReqs": [],
-          "info": "A course on ethical issues in the IT industry."
+          
         },
         {
           "code": "CNT4007",
@@ -95,7 +95,7 @@
           "completed": false,
           "preReqs": ["COP4610"],
           "orPreReqs": [],
-          "info": "A course covering data and communications, requiring Operating Systems as a prerequisite."
+        
         },
         {
           "code": "CIS4360",
@@ -104,7 +104,7 @@
           "completed": false,
           "preReqs": ["COP3530"],
           "orPreReqs": [],
-          "info": "A course in applied cybersecurity, requiring Data Structures as a prerequisite."
+         
         },
         {
           "code": "COP4813",
@@ -113,7 +113,7 @@
           "completed": false,
           "preReqs": ["COP1000"],
           "orPreReqs": [],
-          "info": "A course focused on web systems, requiring Intro to Programming as a prerequisite."
+          
         },
         {
           "code": "CDA4101",
@@ -122,7 +122,7 @@
           "completed": false,
           "preReqs": [],
           "orPreReqs": [],
-          "info": "A course on computer architecture and design."
+          
         },
         {
           "code": "CNT4703",
@@ -131,7 +131,7 @@
           "completed": false,
           "preReqs": [],
           "orPreReqs": [],
-          "info": "A course focused on designing voice and data networks."
+         
         },
         {
           "code": "COP4708",
@@ -140,7 +140,7 @@
           "completed": false,
           "preReqs": ["COP3530"],
           "orPreReqs": [],
-          "info": "A course on database applications, requiring Data Structures as a prerequisite."
+         
         },
         {
           "code": "CEN4010",
@@ -149,7 +149,7 @@
           "completed": false,
           "preReqs": [],
           "orPreReqs": [],
-          "info": "A course in software engineering concepts."
+         
         },
         {
           "code": "CEN4801",
@@ -158,7 +158,7 @@
           "completed": false,
           "preReqs": ["CEN4010"],
           "orPreReqs": [],
-          "info": "A course in systems integration, requiring Software Engineering as a prerequisite."
+         
         },
         {
           "code": "CEN3722",
@@ -167,7 +167,7 @@
           "completed": false,
           "preReqs": [],
           "orPreReqs": [],
-          "info": "A course on human-computer interface design."
+        
         },
         {
           "code": "CIS4510",
@@ -176,7 +176,7 @@
           "completed": false,
           "preReqs": [],
           "orPreReqs": [],
-          "info": "A course on managing IT projects."
+         
         }
       ]
     },
@@ -190,7 +190,7 @@
           "completed": false,
           "preReqs": [],
           "orPreReqs": [],
-          "info": "A course on business writing, focusing on professional communication."
+         
         }
       ],
       "notes": "Students who have taken ENC2210 may use that course, requiring an additional 3-hour upper-level technical elective."
@@ -209,7 +209,7 @@
               "completed": false,
               "preReqs": ["COP4708"],
               "orPreReqs": [],
-              "info": "A course in advanced database applications, requiring Applied Database I as a prerequisite."
+             
             },
             {
               "code": "COP4834",
@@ -218,7 +218,7 @@
               "completed": false,
               "preReqs": ["COP4813"],
               "orPreReqs": [],
-              "info": "A continuation of Web Systems I, requiring Web Systems I as a prerequisite."
+              
             }
           ]
         },
@@ -232,7 +232,7 @@
               "completed": false,
               "preReqs": [],
               "orPreReqs": [],
-              "info": "An introduction to the field of digital forensics."
+              
             },
             {
               "code": "CET4861",
@@ -241,7 +241,7 @@
               "completed": false,
               "preReqs": ["CET4860"],
               "orPreReqs": [],
-              "info": "An advanced course in digital forensics, requiring the Introduction to Digital Forensics course as a prerequisite."
+              
             },
             {
               "code": "CET4862",
@@ -250,7 +250,7 @@
               "completed": false,
               "preReqs": ["CET4860"],
               "orPreReqs": [],
-              "info": "A course on network forensics, requiring Introduction to Digital Forensics as a prerequisite."
+              
             },
             {
               "code": "CET4884",
@@ -259,7 +259,7 @@
               "completed": false,
               "preReqs": [],
               "orPreReqs": [],
-              "info": "A course on security methods and practices."
+              
             }
           ]
         }

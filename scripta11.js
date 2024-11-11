@@ -4,6 +4,7 @@ let programData;
 document.addEventListener("DOMContentLoaded", function () {
     const courseList = document.getElementById("courseList");
     const courseInfo = document.getElementById("courseInfo");
+    const totalCreditsElement = document.getElementById("totalCredits");
 
     fetch('/BSIT.json')
         .then(response => response.json())
@@ -109,7 +110,7 @@ function updateCredits(checkbox, credits) {
     } else {
         totalCredits -= credits;
     }
-    document.getElementById("totalCredits").textContent = totalCredits;
+    document.getElementById("totalCredits").textContent = `Total Credits: ${totalCredits}`;
 }
 
 function arePreReqsMet(preReqs, orPreReqs) {
@@ -134,4 +135,3 @@ function updateCourseStates() {
         });
     });
 }
-

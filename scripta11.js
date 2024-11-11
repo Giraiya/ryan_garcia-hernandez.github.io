@@ -12,8 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (programData.degreeRequirements && Array.isArray(programData.degreeRequirements)) {
                 programData.degreeRequirements.forEach(requirement => {
-                    console.log(`Category: ${requirement.category}`);
-                    
                     if (requirement.courses && Array.isArray(requirement.courses)) {
                         requirement.courses.forEach(course => {
                             addCourseElement(course, courseList);
@@ -22,11 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     if (requirement.options && Array.isArray(requirement.options)) {
                         requirement.options.forEach(option => {
-                            console.log(`Specialization: ${option.name}`);
-                            
                             if (option.courses && Array.isArray(option.courses)) {
                                 option.courses.forEach(specializationCourse => {
-                                    console.log(`Specialization Course: ${specializationCourse.code} - ${specializationCourse.name}`);
                                     addCourseElement(specializationCourse, courseList);
                                 });
                             }
@@ -64,22 +59,25 @@ function addCourseElement(course, courseList) {
     courseDiv.appendChild(checkbox);
     courseDiv.appendChild(label);
 
-    // Adding Prerequisites section
+    // Adding Prerequisites section with red color for prerequisites
     if (course.preReqs?.length > 0 || course.orPreReqs?.length > 0) {
         const prereqDiv = document.createElement("div");
         prereqDiv.classList.add("prerequisites");
 
-        let prerequisitesText = "Prerequisites: ";
-        const prereqs = [];
+        // Red color styling for prerequisites
         if (course.preReqs?.length > 0) {
-            prereqs.push(...course.preReqs);
-        }
-        if (course.orPreReqs?.length > 0) {
-            prereqs.push(...course.orPreReqs);
+            const preReqsText = document.createElement("p");
+            preReqsText.style.color = 'red'; // Apply red color to preReqs
+            preReqsText.textContent = `Prerequisites: ${course.preReqs.join(', ')}`;
+            prereqDiv.appendChild(preReqsText);
         }
 
-        prerequisitesText += prereqs.join(", ");
-        prereqDiv.textContent = prerequisitesText;
+        if (course.orPreReqs?.length > 0) {
+            const orPreReqsText = document.createElement("p");
+            orPreReqsText.style.color = 'red'; // Apply red color to orPreReqs
+            orPreReqsText.textContent = `Or Prerequisites: ${course.orPreReqs.join(', ')}`;
+            prereqDiv.appendChild(orPreReqsText);
+        }
 
         courseDiv.appendChild(prereqDiv);
     }

@@ -7,6 +7,7 @@
         {
           "code": "COP1000",
           "name": "Intro to Programming",
+          "credits": 3,
           "completed": false,
           "preReqs": [],
           "orPreReqs": [],

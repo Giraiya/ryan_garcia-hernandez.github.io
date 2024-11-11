@@ -6,7 +6,7 @@
       "courses": [
         {
           "code": "COP1000",
-          "name": "Intro to Programming",
+          "name": "Principles of Computer Program",
           "credits": 3,
           "completed": false,
           "preReqs": [],
@@ -16,6 +16,7 @@
         {
           "code": "COP2220",
           "name": "C++ Programming",
+          "credits": 3,
           "completed": false,
           "preReqs": ["COP1000"],
           "orPreReqs": ["COP2360", "COP2800"],
@@ -29,7 +30,8 @@
       "courses": [
         {
           "code": "STA2023",
-          "name": "Statistics",
+          "name": "Elementary Statistics",
+          "credits": 3,
           "completed": false,
           "preReqs": [],
           "orPreReqs": [],
@@ -37,7 +39,8 @@
         },
         {
           "code": "MAC2311C",
-          "name": "Calculus",
+          "name": "Calculus I and Lab",
+          "credits": 4,
           "completed": false,
           "preReqs": [],
           "orPreReqs": [],

@@ -4,42 +4,190 @@
     {
       "category": "Programming Foundations",
       "courses": [
-        { "code": "COP1000", "name": "Intro to Programming", "completed": false },
-        { "code": "COP2220", "name": "C++ Programming", "completed": false, "alternate": ["COP2360", "COP2800"] }
+        {
+          "code": "COP1000",
+          "name": "Intro to Programming",
+          "completed": false,
+          "preReqs": [],
+          "orPreReqs": [],
+          "info": "An introductory course in programming."
+        },
+        {
+          "code": "COP2220",
+          "name": "C++ Programming",
+          "completed": false,
+          "preReqs": ["COP1000"],
+          "orPreReqs": ["COP2360", "COP2800"],
+          "info": "A course focused on C++ programming, requiring Intro to Programming as a prerequisite."
+        }
       ],
       "notes": "Two semesters of programming required."
     },
     {
       "category": "Mathematics",
       "courses": [
-        { "code": "STA2023", "name": "Statistics", "completed": false },
-        { "code": "MAC2311C", "name": "Calculus", "completed": false }
+        {
+          "code": "STA2023",
+          "name": "Statistics",
+          "completed": false,
+          "preReqs": [],
+          "orPreReqs": [],
+          "info": "A basic statistics course."
+        },
+        {
+          "code": "MAC2311C",
+          "name": "Calculus",
+          "completed": false,
+          "preReqs": [],
+          "orPreReqs": [],
+          "info": "A course in calculus."
+        }
       ]
     },
     {
       "category": "Program-Specific Courses",
       "creditHours": 39,
       "courses": [
-        { "code": "COP3530", "name": "Data Structures", "credits": 3, "completed": false },
-        { "code": "COP4610", "name": "Operating Systems", "credits": 3, "completed": false },
-        { "code": "CNT3104", "name": "Introduction to Telecommunications", "credits": 2, "completed": false },
-        { "code": "CIS4250", "name": "Ethical Issues in IT", "credits": 1, "completed": false },
-        { "code": "CNT4007", "name": "Data and Computer Communications", "credits": 3, "completed": false },
-        { "code": "CIS4360", "name": "Applied Cybersecurity", "credits": 3, "completed": false },
-        { "code": "COP4813", "name": "Web Systems I", "credits": 3, "completed": false },
-        { "code": "CDA4101", "name": "Computer Organization and Design", "credits": 3, "completed": false },
-        { "code": "CNT4703", "name": "Voice and Data Network Design", "credits": 3, "completed": false },
-        { "code": "COP4708", "name": "Applied Database I", "credits": 3, "completed": false },
-        { "code": "CEN4010", "name": "Software Engineering", "credits": 3, "completed": false },
-        { "code": "CEN4801", "name": "Systems Integration", "credits": 3, "completed": false },
-        { "code": "CEN3722", "name": "Human Computer Interfaces", "credits": 3, "completed": false },
-        { "code": "CIS4510", "name": "IT Project Management", "credits": 3, "completed": false }
+        {
+          "code": "COP3530",
+          "name": "Data Structures",
+          "credits": 3,
+          "completed": false,
+          "preReqs": ["COP1000"],
+          "orPreReqs": [],
+          "info": "An advanced course in data structures, requiring Intro to Programming as a prerequisite."
+        },
+        {
+          "code": "COP4610",
+          "name": "Operating Systems",
+          "credits": 3,
+          "completed": false,
+          "preReqs": ["COP1000"],
+          "orPreReqs": [],
+          "info": "A course covering the fundamentals of operating systems, requiring Intro to Programming as a prerequisite."
+        },
+        {
+          "code": "CNT3104",
+          "name": "Introduction to Telecommunications",
+          "credits": 2,
+          "completed": false,
+          "preReqs": [],
+          "orPreReqs": [],
+          "info": "An introduction to telecommunications systems."
+        },
+        {
+          "code": "CIS4250",
+          "name": "Ethical Issues in IT",
+          "credits": 1,
+          "completed": false,
+          "preReqs": [],
+          "orPreReqs": [],
+          "info": "A course on ethical issues in the IT industry."
+        },
+        {
+          "code": "CNT4007",
+          "name": "Data and Computer Communications",
+          "credits": 3,
+          "completed": false,
+          "preReqs": ["COP4610"],
+          "orPreReqs": [],
+          "info": "A course covering data and communications, requiring Operating Systems as a prerequisite."
+        },
+        {
+          "code": "CIS4360",
+          "name": "Applied Cybersecurity",
+          "credits": 3,
+          "completed": false,
+          "preReqs": ["COP3530"],
+          "orPreReqs": [],
+          "info": "A course in applied cybersecurity, requiring Data Structures as a prerequisite."
+        },
+        {
+          "code": "COP4813",
+          "name": "Web Systems I",
+          "credits": 3,
+          "completed": false,
+          "preReqs": ["COP1000"],
+          "orPreReqs": [],
+          "info": "A course focused on web systems, requiring Intro to Programming as a prerequisite."
+        },
+        {
+          "code": "CDA4101",
+          "name": "Computer Organization and Design",
+          "credits": 3,
+          "completed": false,
+          "preReqs": [],
+          "orPreReqs": [],
+          "info": "A course on computer architecture and design."
+        },
+        {
+          "code": "CNT4703",
+          "name": "Voice and Data Network Design",
+          "credits": 3,
+          "completed": false,
+          "preReqs": [],
+          "orPreReqs": [],
+          "info": "A course focused on designing voice and data networks."
+        },
+        {
+          "code": "COP4708",
+          "name": "Applied Database I",
+          "credits": 3,
+          "completed": false,
+          "preReqs": ["COP3530"],
+          "orPreReqs": [],
+          "info": "A course on database applications, requiring Data Structures as a prerequisite."
+        },
+        {
+          "code": "CEN4010",
+          "name": "Software Engineering",
+          "credits": 3,
+          "completed": false,
+          "preReqs": [],
+          "orPreReqs": [],
+          "info": "A course in software engineering concepts."
+        },
+        {
+          "code": "CEN4801",
+          "name": "Systems Integration",
+          "credits": 3,
+          "completed": false,
+          "preReqs": ["CEN4010"],
+          "orPreReqs": [],
+          "info": "A course in systems integration, requiring Software Engineering as a prerequisite."
+        },
+        {
+          "code": "CEN3722",
+          "name": "Human Computer Interfaces",
+          "credits": 3,
+          "completed": false,
+          "preReqs": [],
+          "orPreReqs": [],
+          "info": "A course on human-computer interface design."
+        },
+        {
+          "code": "CIS4510",
+          "name": "IT Project Management",
+          "credits": 3,
+          "completed": false,
+          "preReqs": [],
+          "orPreReqs": [],
+          "info": "A course on managing IT projects."
+        }
       ]
     },
     {
       "category": "Technical Writing Requirement",
       "courses": [
-        { "code": "GEB3213", "name": "Business Writing", "credits": 3, "completed": false }
+        {
+          "code": "GEB3213",
+          "name": "Business Writing",
+          "credits": 3,
+          "completed": false,
+          "preReqs": [],
+          "orPreReqs": [],
+          "info": "A course on business writing, focusing on professional communication."
+        }
       ],
       "notes": "Students who have taken ENC2210 may use that course, requiring an additional 3-hour upper-level technical elective."
     },
@@ -50,77 +198,69 @@
         {
           "name": "Web Systems Programming",
           "courses": [
-            { "code": "COP4709", "name": "Applied Database II", "credits": 3, "completed": false },
-            { "code": "COP4834", "name": "Web Systems II", "credits": 3, "completed": false }
+            {
+              "code": "COP4709",
+              "name": "Applied Database II",
+              "credits": 3,
+              "completed": false,
+              "preReqs": ["COP4708"],
+              "orPreReqs": [],
+              "info": "A course in advanced database applications, requiring Applied Database I as a prerequisite."
+            },
+            {
+              "code": "COP4834",
+              "name": "Web Systems II",
+              "credits": 3,
+              "completed": false,
+              "preReqs": ["COP4813"],
+              "orPreReqs": [],
+              "info": "A continuation of Web Systems I, requiring Web Systems I as a prerequisite."
+            }
           ]
         },
         {
           "name": "Cybersecurity and Cyberforensics",
           "courses": [
-            { "code": "CET4860", "name": "Introduction to Digital Forensics", "credits": 3, "completed": false },
-            { "code": "CET4861", "name": "Advanced Digital Forensics", "credits": 3, "completed": false },
-            { "code": "CET4862", "name": "Network Forensics and Incident Response", "credits": 3, "completed": false },
-            { "code": "CET4884", "name": "Security Methods and Practice", "credits": 3, "completed": false }
+            {
+              "code": "CET4860",
+              "name": "Introduction to Digital Forensics",
+              "credits": 3,
+              "completed": false,
+              "preReqs": [],
+              "orPreReqs": [],
+              "info": "An introduction to the field of digital forensics."
+            },
+            {
+              "code": "CET4861",
+              "name": "Advanced Digital Forensics",
+              "credits": 3,
+              "completed": false,
+              "preReqs": ["CET4860"],
+              "orPreReqs": [],
+              "info": "An advanced course in digital forensics, requiring the Introduction to Digital Forensics course as a prerequisite."
+            },
+            {
+              "code": "CET4862",
+              "name": "Network Forensics and Incident Response",
+              "credits": 3,
+              "completed": false,
+              "preReqs": ["CET4860"],
+              "orPreReqs": [],
+              "info": "A course on network forensics, requiring Introduction to Digital Forensics as a prerequisite."
+            },
+            {
+              "code": "CET4884",
+              "name": "Security Methods and Practice",
+              "credits": 3,
+              "completed": false,
+              "preReqs": [],
+              "orPreReqs": [],
+              "info": "A course on security methods and practices."
+            }
           ]
         }
       ],
       "creditHours": 6
-    },
-    {
-      "category": "Sample Program of Study",
-      "notes": "Suggested program layout over five semesters.",
-      "semesters": [
-        {
-          "semester": "1st Semester",
-          "courses": [
-            { "code": "CEN3722", "name": "Human Computer Interfaces", "credits": 3, "completed": false },
-            { "code": "CNT3104", "name": "Introduction to Telecommunications", "credits": 2, "completed": false },
-            { "code": "GEB3213", "name": "Business Writing", "credits": 3, "completed": false },
-            { "code": "COP4610", "name": "Operating Systems", "credits": 3, "completed": false },
-            { "code": "Elective", "name": "General Education or Technical Elective", "credits": 3, "completed": false }
-          ],
-          "totalCredits": 14
-        },
-        {
-          "semester": "2nd Semester",
-          "courses": [
-            { "code": "COP3530", "name": "Data Structures", "credits": 3, "completed": false },
-            { "code": "CIS4360", "name": "Applied Cybersecurity", "credits": 3, "completed": false },
-            { "code": "COP4708", "name": "Applied Database I", "credits": 3, "completed": false },
-            { "code": "Elective", "name": "General Education or Technical Elective", "credits": 3, "completed": false }
-          ],
-          "totalCredits": 12
-        },
-        {
-          "semester": "3rd Semester",
-          "courses": [
-            { "code": "CDA4101", "name": "Computer Organization and Design", "credits": 3, "completed": false },
-            { "code": "CIS4250", "name": "Ethical Issues in IT", "credits": 1, "completed": false },
-            { "code": "CEN4801", "name": "Systems Integration", "credits": 3, "completed": false },
-            { "code": "Elective", "name": "General Education or Technical Elective", "credits": 4, "completed": false },
-            { "code": "CEN4010", "name": "Software Engineering", "credits": 3, "completed": false }
-          ],
-          "totalCredits": 14
-        },
-        {
-          "semester": "4th Semester",
-          "courses": [
-            { "code": "CNT4007", "name": "Data and Computer Communications", "credits": 3, "completed": false },
-            { "code": "COP4813", "name": "Web Systems I", "credits": 3, "completed": false },
-            { "code": "Specialization", "name": "Specialization Elective", "credits": 3, "completed": false },
-            { "code": "Specialization", "name": "Specialization Elective", "credits": 3, "completed": false }
-          ],
-          "totalCredits": 12
-        },
-        {
-          "semester": "5th Semester",
-          "courses": [
-            { "code": "CNT4703", "name": "Voice and Data Network Design", "credits": 3, "completed": false },
-            { "code": "CIS4510", "name": "IT Project Management", "credits": 3, "completed": false }
-          ],
-          "totalCredits": 6
-        }
-      ]
     }
   ]
 }

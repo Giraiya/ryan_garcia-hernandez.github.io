@@ -68,26 +68,157 @@
         }
 
         /* Advising tool section */
-       main {
-            padding: 2rem;
-            text-align: left;  /* Ensures content inside main is aligned left */
-        }
+main {
+    padding: 3rem 2rem;
+    background-color: #f9f9f9; /* Light gray background for the main section */
+    color: #333;
+    text-align: left;
+    max-width: 1200px;
+    margin: 0 auto; /* Centering the main content */
+    border-radius: 10px; /* Slight rounding of the corners for a soft look */
+}
 
-        #advising-tool {
-            margin-top: 1rem;
-            padding: 1rem;
-            background: #e0e0e0;
-            border-radius: 8px;
-        }
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1rem;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
+#advising-tool {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: #ffffff; /* White background for the advising tool for contrast */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow to elevate the content */
+    transition: all 0.3s ease;
+}
+
+#advising-tool:hover {
+    transform: scale(1.02); /* Slight zoom effect when hovering over the advising tool */
+}
+
+h2, h3, h4 {
+    color: #222; /* Darker text for headings */
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+h3 {
+    font-size: 1.8rem;
+    color: #444; /* Slightly lighter color for subheadings */
+}
+
+h4 {
+    font-size: 1.4rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    font-size: 1.1rem;
+    color: #555; /* Softer color for course list items */
+    margin: 1rem 0;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #ddd; /* Subtle line separating course items */
+}
+
+ul li:last-child {
+    border-bottom: none; /* Remove bottom border on last item */
+}
+
+ul li span {
+    font-style: italic;
+    color: #888;
+}
+
+ul li[style*="line-through"] {
+    color: #bbb;
+    text-decoration: line-through;
+}
+
+ul li button {
+    background-color: #4CAF50; /* Green for action buttons */
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+ul li button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+ul li button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Additional styling for notes and extra information */
+#advising-tool p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-top: 1rem;
+}
+
+#advising-tool .notes {
+    background-color: #fff3e0; /* Light background for notes */
+    border-left: 5px solid #ff9800; /* Orange accent on the left */
+    padding: 1rem;
+    margin-top: 1.5rem;
+    font-style: italic;
+}
+
+#advising-tool .notes p {
+    margin-bottom: 0;
+}
+
+/* Responsiveness for smaller devices */
+@media (max-width: 768px) {
+    main {
+        padding: 2rem;
+    }
+
+    #advising-tool {
+        padding: 1.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1.2rem;
+    }
+
+    ul li {
+        font-size: 1rem;
+    }
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
     
     </style>
 </head>

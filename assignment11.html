@@ -9,18 +9,18 @@
     <link rel="stylesheet" href="styles.css">
     <title>BSIT Class Advising Tool</title>
     <style>
-        /* General styling */
-body {
-    font-family: Arial, sans-serif;
+     /* General styling */
+html, body {
+    height: 100%; /* Ensure both html and body take up full height */
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    overflow-y: auto; /* Allow scrolling on the body */
-    height: 100%; /* Ensure body takes up full height */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-html {
-    height: 100%; /* Ensure html takes up full height */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    overflow-y: auto; /* Allow vertical scrolling on the body */
 }
 
 header {
@@ -87,7 +87,7 @@ nav {
 main {
     padding: 2rem;
     text-align: left;
-    min-height: 100vh; /* Allow main section to expand and fill screen */
+    min-height: 100vh; /* Ensure main section is at least full screen height */
 }
 
 #advising-tool {
@@ -97,8 +97,9 @@ main {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif;
-    overflow-y: auto; /* Allow scrolling if content overflows */
-    max-height: 80vh; /* Limit height for advising tool, but allow scrolling */
+    max-height: calc(100vh - 200px); /* Limit the height to be screen minus some space for header/nav */
+    overflow-y: auto; /* Allow scrolling within the advising tool if content exceeds */
+    padding-bottom: 2rem; /* Add bottom padding for spacing */
 }
 
 /* Ensure courses list and item containers allow scrolling */
@@ -169,6 +170,7 @@ main {
         max-height: 60vh;
     }
 }
+
 
     
     </style>

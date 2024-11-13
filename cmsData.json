@@ -1,0 +1,77 @@
+[
+    {
+        "name": "WordPress",
+        "support": "Open Source, Supported by most hosting companies",
+        "technology": "PHP/MySQL",
+        "capabilities": [
+            "Supports themes",
+            "Supports plugins",
+            "Public API"
+        ],
+        "limitations": [
+            "Security (plugins)",
+            "Security (updates)"
+        ],
+        "example": "https://wordpress.org/"
+    },
+    {
+        "name": "Joomla",
+        "support": "Open Source",
+        "technology": "PHP/MySQL",
+        "capabilities": [
+            "Flexible content structure",
+            "Multilingual support",
+            "Powerful extensions"
+        ],
+        "limitations": [
+            "Steeper learning curve",
+            "Limited customization in backend"
+        ],
+        "example": "https://www.joomla.org/"
+    },
+    {
+        "name": "Drupal",
+        "support": "Open Source",
+        "technology": "PHP/MySQL, PostgreSQL",
+        "capabilities": [
+            "Highly customizable",
+            "Extensive API support",
+            "Robust security"
+        ],
+        "limitations": [
+            "Complex to set up",
+            "Steeper learning curve for beginners"
+        ],
+        "example": "https://www.drupal.org/"
+    },
+    {
+        "name": "Wix",
+        "support": "Proprietary, Supported by Wix",
+        "technology": "JavaScript, Custom backend",
+        "capabilities": [
+            "Drag-and-drop editor",
+            "E-commerce options",
+            "Automatic updates"
+        ],
+        "limitations": [
+            "Limited customization",
+            "Not fully open source"
+        ],
+        "example": "https://www.wix.com/"
+    },
+    {
+        "name": "Shopify",
+        "support": "Proprietary, Supported by Shopify",
+        "technology": "Ruby on Rails",
+        "capabilities": [
+            "Easy e-commerce setup",
+            "Supports plugins",
+            "Built-in SEO features"
+        ],
+        "limitations": [
+            "Monthly fees",
+            "Limited customization outside templates"
+        ],
+        "example": "https://www.shopify.com/"
+    }
+]

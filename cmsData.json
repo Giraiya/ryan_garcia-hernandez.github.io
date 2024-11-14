@@ -30,19 +30,19 @@
         "example": "https://www.joomla.org/"
     },
     {
-        "name": "Drupal",
-        "support": "Open Source",
-        "technology": "PHP/MySQL, PostgreSQL",
+        "name": "Square",
+        "support": "Proprietary, Supported by Square",
+        "technology": "JavaScript, Custom backend",
         "capabilities": [
-            "Highly customizable",
-            "Extensive API support",
-            "Robust security"
+            "Built-in e-commerce features",
+            "User-friendly drag-and-drop editor",
+            "Integration with payment processing"
         ],
         "limitations": [
-            "Complex to set up",
-            "Steeper learning curve for beginners"
+            "Limited customization options",
+            "Few third-party plugins available"
         ],
-        "example": "https://www.drupal.org/"
+        "example": "https://squareup.com/"
     },
     {
         "name": "Wix",

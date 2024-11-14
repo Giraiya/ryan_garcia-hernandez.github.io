@@ -15,6 +15,21 @@
         "example": "https://wordpress.org/"
     },
     {
+        "name": "Wix",
+        "support": "Proprietary, Supported by Wix",
+        "technology": "JavaScript, Custom backend",
+        "capabilities": [
+            "Drag-and-drop editor",
+            "E-commerce options",
+            "Automatic updates"
+        ],
+        "limitations": [
+            "Limited customization",
+            "Not fully open source"
+        ],
+        "example": "https://www.wix.com/"
+    },
+    {
         "name": "Joomla",
         "support": "Open Source",
         "technology": "PHP/MySQL",
@@ -45,21 +60,6 @@
         "example": "https://squareup.com/"
     },
     {
-        "name": "Wix",
-        "support": "Proprietary, Supported by Wix",
-        "technology": "JavaScript, Custom backend",
-        "capabilities": [
-            "Drag-and-drop editor",
-            "E-commerce options",
-            "Automatic updates"
-        ],
-        "limitations": [
-            "Limited customization",
-            "Not fully open source"
-        ],
-        "example": "https://www.wix.com/"
-    },
-    {
         "name": "Shopify",
         "support": "Proprietary, Supported by Shopify",
         "technology": "Ruby on Rails",
@@ -75,3 +75,4 @@
         "example": "https://www.shopify.com/"
     }
 ]
+
